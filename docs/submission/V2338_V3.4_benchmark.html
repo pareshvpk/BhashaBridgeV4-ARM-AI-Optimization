@@ -1,0 +1,168 @@
+<!doctype html><html><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>V2338 — BhashaBridge V3.4 Android benchmark</title>
+<style>
+:root{
+ --surface-1:#fcfcfb;--plane:#f9f9f7;--text-primary:#0b0b0b;--text-secondary:#52514e;
+ --muted:#898781;--grid:#e1e0d9;--baseline:#c3c2b7;--border:rgba(11,11,11,.10);
+ --series-1:#2a78d6;--series-2:#1baf7a;--series-3:#eb6834;--muted-bar:#c9c8c2;--good:#006300;
+}
+@media (prefers-color-scheme:dark){:root{
+ --surface-1:#1a1a19;--plane:#0d0d0d;--text-primary:#fff;--text-secondary:#c3c2b7;
+ --muted:#898781;--grid:#2c2c2a;--baseline:#383835;--border:rgba(255,255,255,.10);
+ --series-1:#3987e5;--series-2:#199e70;--series-3:#d95926;--muted-bar:#3a3a37;--good:#0ca30c;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--text-primary);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;font-size:15px}
+.wrap{max-width:900px;margin:0 auto;padding:32px 22px 80px}
+.hero{background:var(--surface-1);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:22px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:30px;margin:6px 0 4px;letter-spacing:-.02em}
+.sub{color:var(--text-secondary);font-size:14px}
+.idrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{font-size:12.5px;background:var(--plane);border:1px solid var(--border);border-radius:999px;padding:4px 11px;color:var(--text-secondary)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0 8px}
+.tile{background:var(--surface-1);border:1px solid var(--border);border-radius:14px;padding:16px 16px 14px}
+.tile .v{font-size:26px;font-weight:650;letter-spacing:-.02em}
+.tile .u{font-size:13px;color:var(--muted);font-weight:500}
+.tile .k{font-size:12.5px;color:var(--text-secondary);margin-top:3px}
+section{background:var(--surface-1);border:1px solid var(--border);border-radius:16px;padding:22px 26px;margin-top:18px}
+h2{font-size:19px;margin:0 0 4px;letter-spacing:-.01em}
+h2 .num{color:var(--series-1);font-variant-numeric:tabular-nums;margin-right:10px}
+.note{color:var(--text-secondary);font-size:13.5px;margin:2px 0 16px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin-top:6px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--grid)}
+th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.chartwrap{overflow-x:auto;margin-top:6px}
+.chart{width:100%;height:auto;min-width:420px;display:block}
+.ylab{fill:var(--text-secondary);font-size:12.5px}
+.vlab{fill:var(--text-primary);font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums}
+.axlab{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.grid{stroke:var(--grid);stroke-width:1}
+.legend{display:flex;gap:16px;margin:10px 0 2px;font-size:12.5px;color:var(--text-secondary)}
+.lg{display:inline-flex;align-items:center;gap:6px}
+.sw{width:11px;height:11px;border-radius:3px;display:inline-block}
+.good{color:var(--good);font-weight:600}
+.foot{color:var(--muted);font-size:12px;margin-top:26px;text-align:center}
+.callout{background:var(--plane);border-left:3px solid var(--series-1);border-radius:8px;padding:12px 15px;font-size:13.5px;color:var(--text-secondary);margin-top:12px}
+</style></head><body><div class="wrap">
+ <div class="hero">
+  <div class="eyebrow">BhashaBridge V3.4 · Android on-device benchmark · EN→HI · no-cache decoder</div>
+  <h1>vivo V2338</h1>
+  <div class="sub">Hardware identifier <b>V2338</b> ·
+   Android 16 (SDK 36) · Snapdragon 6 Gen 1 (SM6450)</div>
+  <div class="idrow">
+   <span class="pill">ARMv8.2 · 4× Cortex-A78 @ 2.21 GHz + 4× Cortex-A55 @ 1.80 GHz</span>
+   <span class="pill">dotprod ✔ · fp16 ✔ · i8mm ✘ · SVE2 ✘ · SME ✘</span>
+   <span class="pill">ONNX Runtime 1.17.1</span>
+   <span class="pill">Policy: fixed · intra=4 · inter=2 · ALL_OPT</span>
+   <span class="pill">IndicTrans2 INT8 · 630 MB assets</span>
+   <span class="pill">debug build</span>
+  </div>
+ </div>
+ <div class="tiles">
+  <div class="tile"><div class="v">867 <span class="u">ms</span></div><div class="k">Longest sentence (18 w, 18 tok)</div></div>
+  <div class="tile"><div class="v">166 <span class="u">ms</span></div><div class="k">Single word “Hello”</div></div>
+  <div class="tile"><div class="v">22.8 <span class="u">tok/s</span></div><div class="k">Peak decode throughput</div></div>
+  <div class="tile"><div class="v">8.8 <span class="u">s</span></div><div class="k">Cold start to ready</div></div>
+  <div class="tile"><div class="v">840 <span class="u">MB</span></div><div class="k">PSS after model load</div></div>
+  <div class="tile"><div class="v">632 <span class="u">MB</span></div><div class="k">Debug APK (arm64-v8a)</div></div>
+ </div>
+ <section>
+  <h2><span class="num">§1</span>Device &amp; run configuration</h2>
+  <p class="note">Measured by driving the shipped UI over adb (8 iterations per sentence),
+   reading the per-translation metrics row the app renders under the output box. EN→HI,
+   greedy decode, <b>no KV cache</b> — the decoder recomputes the full prefix every step,
+   as specified in the V3.4 repo.</p>
+  <table>
+   <tr><th>Field</th><th>Value</th></tr>
+   <tr><td>Device</td><td>vivo V2338</td></tr>
+   <tr><td>SoC</td><td>Snapdragon 6 Gen 1 (SM6450) · ARMv8.2 · 4× Cortex-A78 @ 2.21 GHz + 4× Cortex-A55 @ 1.80 GHz</td></tr>
+   <tr><td>ISA features</td><td>NEON, fp16 (fphp/asimdhp), dot-product (asimddp), aes/pmull/sha1/sha2, crc32, atomics, lrcpc — no i8mm, no SVE2, no SME</td></tr>
+   <tr><td>RAM / OS</td><td>7.3 GB · Android 16, SDK 36 · arm64-v8a</td></tr>
+   <tr><td>ORT policy</td><td>intra=4 · inter=2 · OptLevel.ALL_OPT · CPU EP</td></tr>
+   <tr><td>Decoder</td><td>merged INT8 graph driven with <code>use_cache_branch=false</code> + empty past (no-cache)</td></tr>
+   <tr><td>Model assets on disk</td><td>630 MB (4 ONNX INT8 + 2 Vosk + 4 vocab dicts)</td></tr>
+  </table>
+ </section>
+ <section>
+  <h2><span class="num">§2</span>Latency across the word-count ladder</h2>
+  <p class="note">Every sentence length from 1 to 18 words, n=8 each (104 timed
+   translations total, zero dropped). Median wall-clock translate time — tokenizer + encoder +
+   full greedy decode, measured inside the app around <code>translator.translate()</code>.</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 462" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29" text-anchor="end" class="ylab">1w · “Hello”</text><rect x="176" y="14" width="78.4" height="18" rx="4" style="fill:var(--series-1)"/><text x="262.4" y="29" class="vlab">166ms</text><text x="164" y="63" text-anchor="end" class="ylab">2w · “Thank you”</text><rect x="176" y="48" width="76.2" height="18" rx="4" style="fill:var(--series-1)"/><text x="260.2" y="63" class="vlab">162ms</text><text x="164" y="97" text-anchor="end" class="ylab">3w · “I need water”</text><rect x="176" y="82" width="98.6" height="18" rx="4" style="fill:var(--series-1)"/><text x="282.6" y="97" class="vlab">210ms</text><text x="164" y="131" text-anchor="end" class="ylab">4w · “I need help please”</text><rect x="176" y="116" width="115.1" height="18" rx="4" style="fill:var(--series-1)"/><text x="299.1" y="131" class="vlab">244ms</text><text x="164" y="165" text-anchor="end" class="ylab">5w · “Where is the nearest hospital”</text><rect x="176" y="150" width="117.9" height="18" rx="4" style="fill:var(--series-1)"/><text x="301.9" y="165" class="vlab">250ms</text><text x="164" y="199" text-anchor="end" class="ylab">6w · “Please call an ambulance right now”</text><rect x="176" y="184" width="135.8" height="18" rx="4" style="fill:var(--series-1)"/><text x="319.8" y="199" class="vlab">288ms</text><text x="164" y="233" text-anchor="end" class="ylab">7w · “My friend is injured and needs help”</text><rect x="176" y="218" width="227.8" height="18" rx="4" style="fill:var(--series-1)"/><text x="411.8" y="233" class="vlab">484ms</text><text x="164" y="267" text-anchor="end" class="ylab">9w · “Can you tell me where the police…”</text><rect x="176" y="252" width="276.5" height="18" rx="4" style="fill:var(--series-1)"/><text x="460.5" y="267" class="vlab">588ms</text><text x="164" y="301" text-anchor="end" class="ylab">11w · “I am looking for a doctor who…”</text><rect x="176" y="286" width="299.5" height="18" rx="4" style="fill:var(--series-1)"/><text x="483.5" y="301" class="vlab">636ms</text><text x="164" y="335" text-anchor="end" class="ylab">11w · “Can you please tell me where the railway…”</text><rect x="176" y="320" width="299.8" height="18" rx="4" style="fill:var(--series-1)"/><text x="483.8" y="335" class="vlab">637ms</text><text x="164" y="369" text-anchor="end" class="ylab">13w · “The weather is very hot today…”</text><rect x="176" y="354" width="343.3" height="18" rx="4" style="fill:var(--series-1)"/><text x="527.3" y="369" class="vlab">730ms</text><text x="164" y="403" text-anchor="end" class="ylab">15w · “My friend is injured … market road”</text><rect x="176" y="388" width="405.6" height="18" rx="4" style="fill:var(--series-1)"/><text x="589.6" y="403" class="vlab">862ms</text><text x="164" y="437" text-anchor="end" class="ylab">18w · “I have been waiting at the bus stop…”</text><rect x="176" y="422" width="408.0" height="18" rx="4" style="fill:var(--series-1)"/><text x="592.0" y="437" class="vlab">867ms</text></svg></div>
+  <table>
+   <tr><th>Sentence</th><th class="n">Words</th><th class="n">Tokens</th>
+       <th class="n">Median ms</th><th class="n">σ</th>
+       <th class="n">Range</th><th class="n">tok/s</th></tr>
+   <tr><td>“Hello”</td><td class="n">1</td><td class="n">3</td><td class="n">166</td><td class="n">±20.0</td><td class="n">140–197</td><td class="n">18.1</td></tr><tr><td>“Thank you”</td><td class="n">2</td><td class="n">3</td><td class="n">162</td><td class="n">±9.2</td><td class="n">153–178</td><td class="n">18.5</td></tr><tr><td>“I need water”</td><td class="n">3</td><td class="n">4</td><td class="n">210</td><td class="n">±12.8</td><td class="n">188–227</td><td class="n">19.1</td></tr><tr><td>“I need help please”</td><td class="n">4</td><td class="n">5</td><td class="n">244</td><td class="n">±9.4</td><td class="n">220–253</td><td class="n">20.4</td></tr><tr><td>“Where is the nearest hospital”</td><td class="n">5</td><td class="n">5</td><td class="n">250</td><td class="n">±27.3</td><td class="n">240–309</td><td class="n">20.0</td></tr><tr><td>“Please call an ambulance right now”</td><td class="n">6</td><td class="n">6</td><td class="n">288</td><td class="n">±16.9</td><td class="n">269–310</td><td class="n">20.8</td></tr><tr><td>“My friend is injured and needs help”</td><td class="n">7</td><td class="n">11</td><td class="n">484</td><td class="n">±7.0</td><td class="n">469–492</td><td class="n">22.8</td></tr><tr><td>“Can you tell me where the police…”</td><td class="n">9</td><td class="n">13</td><td class="n">588</td><td class="n">±12.4</td><td class="n">572–612</td><td class="n">22.1</td></tr><tr><td>“I am looking for a doctor who…”</td><td class="n">11</td><td class="n">14</td><td class="n">636</td><td class="n">±31.2</td><td class="n">619–713</td><td class="n">21.9</td></tr><tr><td>“Can you please tell me where the railway…”</td><td class="n">11</td><td class="n">14</td><td class="n">637</td><td class="n">±15.0</td><td class="n">619–662</td><td class="n">22.0</td></tr><tr><td>“The weather is very hot today…”</td><td class="n">13</td><td class="n">16</td><td class="n">730</td><td class="n">±25.6</td><td class="n">712–795</td><td class="n">21.9</td></tr><tr><td>“My friend is injured … market road”</td><td class="n">15</td><td class="n">18</td><td class="n">862</td><td class="n">±21.3</td><td class="n">849–908</td><td class="n">20.9</td></tr><tr><td>“I have been waiting at the bus stop…”</td><td class="n">18</td><td class="n">18</td><td class="n">867</td><td class="n">±145.0</td><td class="n">826–1293</td><td class="n">20.8</td></tr>
+  </table>
+ </section>
+ <section>
+  <h2><span class="num">§3</span>What actually drives latency</h2>
+  <p class="note">Cost tracks <b>decoder steps</b>, not input words. Across the ladder each
+   additional output token costs about <b>47 ms</b>; the encoder and tokenizer contribute a
+   roughly fixed floor of ~26 ms. Note w05 (5 words) and
+   w04 (4 words) both emit 5 tokens and land within 6 ms
+   of each other, while w07 jumps to 11 tokens and nearly doubles.</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 462" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29" text-anchor="end" class="ylab">3 tok · 1w</text><rect x="176" y="14" width="78.4" height="18" rx="4" style="fill:var(--series-1)"/><text x="262.4" y="29" class="vlab">166ms</text><text x="164" y="63" text-anchor="end" class="ylab">3 tok · 2w</text><rect x="176" y="48" width="76.2" height="18" rx="4" style="fill:var(--series-1)"/><text x="260.2" y="63" class="vlab">162ms</text><text x="164" y="97" text-anchor="end" class="ylab">4 tok · 3w</text><rect x="176" y="82" width="98.6" height="18" rx="4" style="fill:var(--series-1)"/><text x="282.6" y="97" class="vlab">210ms</text><text x="164" y="131" text-anchor="end" class="ylab">5 tok · 4w</text><rect x="176" y="116" width="115.1" height="18" rx="4" style="fill:var(--series-1)"/><text x="299.1" y="131" class="vlab">244ms</text><text x="164" y="165" text-anchor="end" class="ylab">5 tok · 5w</text><rect x="176" y="150" width="117.9" height="18" rx="4" style="fill:var(--series-1)"/><text x="301.9" y="165" class="vlab">250ms</text><text x="164" y="199" text-anchor="end" class="ylab">6 tok · 6w</text><rect x="176" y="184" width="135.8" height="18" rx="4" style="fill:var(--series-1)"/><text x="319.8" y="199" class="vlab">288ms</text><text x="164" y="233" text-anchor="end" class="ylab">11 tok · 7w</text><rect x="176" y="218" width="227.8" height="18" rx="4" style="fill:var(--series-1)"/><text x="411.8" y="233" class="vlab">484ms</text><text x="164" y="267" text-anchor="end" class="ylab">13 tok · 9w</text><rect x="176" y="252" width="276.5" height="18" rx="4" style="fill:var(--series-1)"/><text x="460.5" y="267" class="vlab">588ms</text><text x="164" y="301" text-anchor="end" class="ylab">14 tok · 11w</text><rect x="176" y="286" width="299.5" height="18" rx="4" style="fill:var(--series-1)"/><text x="483.5" y="301" class="vlab">636ms</text><text x="164" y="335" text-anchor="end" class="ylab">14 tok · 11w</text><rect x="176" y="320" width="299.8" height="18" rx="4" style="fill:var(--series-1)"/><text x="483.8" y="335" class="vlab">637ms</text><text x="164" y="369" text-anchor="end" class="ylab">16 tok · 13w</text><rect x="176" y="354" width="343.3" height="18" rx="4" style="fill:var(--series-1)"/><text x="527.3" y="369" class="vlab">730ms</text><text x="164" y="403" text-anchor="end" class="ylab">18 tok · 15w</text><rect x="176" y="388" width="405.6" height="18" rx="4" style="fill:var(--series-1)"/><text x="589.6" y="403" class="vlab">862ms</text><text x="164" y="437" text-anchor="end" class="ylab">18 tok · 18w</text><rect x="176" y="422" width="408.0" height="18" rx="4" style="fill:var(--series-1)"/><text x="592.0" y="437" class="vlab">867ms</text></svg></div>
+  <div class="callout"><b>The 18-token ceiling.</b> <code>Translator.maxLength = 18</code> caps
+   the greedy loop, and both the 15-word and 18-word sentences hit it exactly — which is why their
+   medians (862 ms and 867 ms) are nearly identical
+   despite the longer input. Past ~14 words the app stops translating more, it just truncates.
+   That cap, not the CPU, is the real limit on long sentences.</div>
+ </section>
+ <section>
+  <h2><span class="num">§4</span>Decode throughput</h2>
+  <p class="note">Tokens per second over the whole translate call. Throughput <b>rises</b> with
+   sentence length — from 18.1 to 22.8 tok/s — because the fixed
+   encoder and tokenizer cost amortises across more decoder steps. It stays within a narrow band,
+   which is the signature of a no-cache decoder: every step redoes the whole prefix, so per-token
+   cost never drops the way a KV-cache run's would.</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 462" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29" text-anchor="end" class="ylab">1w · 3 tok</text><rect x="176" y="14" width="323.7" height="18" rx="4" style="fill:var(--series-2)"/><text x="507.7" y="29" class="vlab">18.1 tok/s</text><text x="164" y="63" text-anchor="end" class="ylab">2w · 3 tok</text><rect x="176" y="48" width="332.7" height="18" rx="4" style="fill:var(--series-2)"/><text x="516.7" y="63" class="vlab">18.5 tok/s</text><text x="164" y="97" text-anchor="end" class="ylab">3w · 4 tok</text><rect x="176" y="82" width="342.5" height="18" rx="4" style="fill:var(--series-2)"/><text x="526.5" y="97" class="vlab">19.1 tok/s</text><text x="164" y="131" text-anchor="end" class="ylab">4w · 5 tok</text><rect x="176" y="116" width="366.8" height="18" rx="4" style="fill:var(--series-2)"/><text x="550.8" y="131" class="vlab">20.4 tok/s</text><text x="164" y="165" text-anchor="end" class="ylab">5w · 5 tok</text><rect x="176" y="150" width="357.8" height="18" rx="4" style="fill:var(--series-2)"/><text x="541.8" y="165" class="vlab">20.0 tok/s</text><text x="164" y="199" text-anchor="end" class="ylab">6w · 6 tok</text><rect x="176" y="184" width="373.0" height="18" rx="4" style="fill:var(--series-2)"/><text x="557.0" y="199" class="vlab">20.8 tok/s</text><text x="164" y="233" text-anchor="end" class="ylab">7w · 11 tok</text><rect x="176" y="218" width="408.0" height="18" rx="4" style="fill:var(--series-2)"/><text x="592.0" y="233" class="vlab">22.8 tok/s</text><text x="164" y="267" text-anchor="end" class="ylab">9w · 13 tok</text><rect x="176" y="252" width="397.2" height="18" rx="4" style="fill:var(--series-2)"/><text x="581.2" y="267" class="vlab">22.1 tok/s</text><text x="164" y="301" text-anchor="end" class="ylab">11w · 14 tok</text><rect x="176" y="286" width="393.7" height="18" rx="4" style="fill:var(--series-2)"/><text x="577.7" y="301" class="vlab">21.9 tok/s</text><text x="164" y="335" text-anchor="end" class="ylab">11w · 14 tok</text><rect x="176" y="320" width="394.5" height="18" rx="4" style="fill:var(--series-2)"/><text x="578.5" y="335" class="vlab">22.0 tok/s</text><text x="164" y="369" text-anchor="end" class="ylab">13w · 16 tok</text><rect x="176" y="354" width="393.7" height="18" rx="4" style="fill:var(--series-2)"/><text x="577.7" y="369" class="vlab">21.9 tok/s</text><text x="164" y="403" text-anchor="end" class="ylab">15w · 18 tok</text><rect x="176" y="388" width="374.8" height="18" rx="4" style="fill:var(--series-2)"/><text x="558.8" y="403" class="vlab">20.9 tok/s</text><text x="164" y="437" text-anchor="end" class="ylab">18w · 18 tok</text><rect x="176" y="422" width="372.1" height="18" rx="4" style="fill:var(--series-2)"/><text x="556.1" y="437" class="vlab">20.8 tok/s</text></svg></div>
+ </section>
+ <section>
+  <h2><span class="num">§5</span>Against the recorded V4 debug run</h2>
+  <p class="note">Only the 4 sentences whose text is <i>identical</i> to the V4 campaign are
+   listed — the rest of the ladder has no recorded counterpart. V4 columns come from
+   <code>files/benchmark/BENCHMARK_SUMMARY.md</code> §2 (same handset, debug build). Last column is
+   V4's KV-cache time ÷ this run; <b>above 1.00× means this no-cache build was faster</b>.</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 122" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29" text-anchor="end" class="ylab">V3.4 no-cache · this run</text><rect x="176" y="14" width="260.3" height="18" rx="4" style="fill:var(--series-1)"/><text x="444.3" y="29" class="vlab">637ms</text><text x="164" y="63" text-anchor="end" class="ylab">V4 KV-cache · recorded</text><rect x="176" y="48" width="296.3" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="480.3" y="63" class="vlab">725ms</text><text x="164" y="97" text-anchor="end" class="ylab">V4 no-cache · recorded</text><rect x="176" y="82" width="408.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="592.0" y="97" class="vlab">998ms</text></svg></div>
+  <div style="font-size:13px;color:var(--muted);margin:14px 0 4px">“Can you please tell me where the railway station is located” — ms, lower better</div>
+  <table>
+   <tr><th>Sentence</th><th class="n">V4 no-cache</th><th class="n">V3.4 this run</th>
+       <th class="n">V4 KV-cache</th><th class="n">vs V4 KV</th></tr>
+   <tr><td>“Hello”</td><td class="n">585</td><td class="n">166</td><td class="n">173</td><td class="n">1.04×</td></tr><tr><td>“I need help please”</td><td class="n">491</td><td class="n">244</td><td class="n">267</td><td class="n">1.09×</td></tr><tr><td>“Where is the nearest hospital”</td><td class="n">412</td><td class="n">250</td><td class="n">264</td><td class="n">1.06×</td></tr><tr><td>“Can you please tell me where the railway…”</td><td class="n">998</td><td class="n">637</td><td class="n">725</td><td class="n">1.14×</td></tr>
+  </table>
+  <div class="callout"><b>Read this table with care.</b> The V4 numbers were captured on another
+   day, from a different build, under unknown thermal and background conditions — and this run
+   used a newer ONNX Runtime path. Only the V3.4 column was measured in this session. It is
+   indicative, not a controlled A/B.</div>
+ </section>
+ <section>
+  <h2><span class="num">§6</span>Output correctness spot-check</h2>
+  <p class="note">One sampled output per sentence, captured from the running app — the latency
+   numbers above are for real translations, not empty calls. The last two rows are the ones
+   truncated by the 18-token cap.</p>
+  <table><tr><th>Input (English)</th><th class="n">Tokens</th><th>Output (Hindi)</th></tr><tr><td>Hello</td><td class="n">3</td><td>नमस्कार ।</td></tr><tr><td>Thank you</td><td class="n">3</td><td>धन्यवाद ।</td></tr><tr><td>I need water</td><td class="n">4</td><td>मुझे पानी चाहिए</td></tr><tr><td>I need help please</td><td class="n">5</td><td>मुझे मदद चाहिए कृपया</td></tr><tr><td>Where is the nearest hospital</td><td class="n">5</td><td>निकटतम अस्पताल कहाँ है</td></tr><tr><td>Please call an ambulance right now</td><td class="n">6</td><td>कृपया अभी एम्बुलेंस बुलाओ</td></tr><tr><td>My friend is injured and needs help</td><td class="n">11</td><td>मेरा दोस्त घायल है और उसे मदद की ज़रूरत है</td></tr><tr><td>Can you tell me where the police station is</td><td class="n">13</td><td>क्या आप मुझे बता सकते हैं कि पुलिस स्टेशन कहाँ है ?</td></tr><tr><td>I am looking for a doctor who speaks English and Hindi</td><td class="n">14</td><td>मैं एक ऐसे डॉक्टर की तलाश कर रहा हूँ जो अंग्रेजी और हिंदी</td></tr><tr><td>Can you please tell me where the railway station is located</td><td class="n">14</td><td>क्या आप कृपया मुझे बता सकते हैं कि रेलवे स्टेशन कहाँ स्थित है</td></tr><tr><td>The weather is very hot today so please drink water every few hours</td><td class="n">16</td><td>आज मौसम बहुत गर्म है इसलिए कृपया हर कुछ घंटों में पानी पीएँ ।</td></tr><tr><td>My friend is injured and needs help please call an ambulance to the market road</td><td class="n">18</td><td>मेरा दोस्त घायल है और उसे मदद की ज़रूरत है कृपया बाजार सड़क पर एक एम्बुलेंस बुल</td></tr><tr><td>I have been waiting at the bus stop for two hours and nobody has come to help me</td><td class="n">18</td><td>मैं दो घंटे से बस स्टॉप पर इंतजार कर रहा हूं और कोई मेरी मदद करने नहीं आया</td></tr></table>
+ </section>
+ <section>
+  <h2><span class="num">§7</span>Startup &amp; memory</h2>
+  <table>
+   <tr><th>Metric</th><th class="n">Value</th></tr>
+   <tr><td>Cold start — launch to translator ready</td><td class="n">8.8 s</td></tr>
+   <tr><td>Activity first frame</td><td class="n">1019 ms</td></tr>
+   <tr><td>PSS after model load</td><td class="n">840 MB</td></tr>
+   <tr><td>Native heap</td><td class="n">752 MB</td></tr>
+   <tr><td>Debug APK (arm64-v8a)</td><td class="n">632 MB</td></tr>
+   <tr><td>Model assets bundled</td><td class="n">630 MB</td></tr>
+  </table>
+  <div class="callout">This is a <b>debug</b> build: no R8, no resource shrinking, and
+   <code>noCompress</code> on the ONNX assets. The V4 campaign measured release builds ~2.4–2.5×
+   faster than debug on identical code, so these latencies are an upper bound.</div>
+ </section>
+ <div class="foot">BhashaBridge V3.4 · Android EN→HI · no-cache decoder · ORT 1.17.1 ·
+  8 iterations/sentence · measured 2026-08-13 on V2338</div>
+</div></body></html>

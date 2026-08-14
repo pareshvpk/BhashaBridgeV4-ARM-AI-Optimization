@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+  <title>BhashaBridge inference pipeline</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b949e"/>
+    </marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2ea44f"/>
+    </marker>
+  </defs>
+
+  <g stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)" fill="none">
+    <line x1="128" y1="72" x2="176" y2="100"/>
+    <line x1="128" y1="140" x2="176" y2="118"/>
+    <line x1="272" y1="110" x2="316" y2="110"/>
+    <line x1="412" y1="110" x2="456" y2="110"/>
+    <line x1="552" y1="110" x2="596" y2="110"/>
+    <line x1="736" y1="110" x2="784" y2="110"/>
+  </g>
+
+  <!-- inputs -->
+  <g>
+    <rect x="16" y="46" width="112" height="46" rx="10" fill="#8957e5" fill-opacity="0.14" stroke="#8957e5" stroke-width="1.5"/>
+    <text x="72" y="68" text-anchor="middle" font-size="13" font-weight="600" fill="#8957e5">Speech</text>
+    <text x="72" y="83" text-anchor="middle" font-size="10.5" fill="#7d8590">Vosk, on-device</text>
+
+    <rect x="16" y="118" width="112" height="46" rx="10" fill="#8957e5" fill-opacity="0.14" stroke="#8957e5" stroke-width="1.5"/>
+    <text x="72" y="140" text-anchor="middle" font-size="13" font-weight="600" fill="#8957e5">Typing</text>
+    <text x="72" y="155" text-anchor="middle" font-size="10.5" fill="#7d8590">EN or HI</text>
+  </g>
+
+  <!-- tokenizer -->
+  <rect x="176" y="86" width="96" height="48" rx="10" fill="#8b949e" fill-opacity="0.14" stroke="#8b949e" stroke-width="1.5"/>
+  <text x="224" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#7d8590">Tokenizer</text>
+  <text x="224" y="123" text-anchor="middle" font-size="10.5" fill="#7d8590">72 ms cold</text>
+
+  <!-- three graphs -->
+  <rect x="316" y="86" width="96" height="48" rx="10" fill="#0091BD" fill-opacity="0.16" stroke="#0091BD" stroke-width="1.5"/>
+  <text x="364" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#0091BD">encoder</text>
+  <text x="364" y="123" text-anchor="middle" font-size="10.5" fill="#7d8590">INT8 graph 1</text>
+
+  <rect x="456" y="86" width="96" height="48" rx="10" fill="#0091BD" fill-opacity="0.16" stroke="#0091BD" stroke-width="1.5"/>
+  <text x="504" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#0091BD">decoder_init</text>
+  <text x="504" y="123" text-anchor="middle" font-size="10.5" fill="#7d8590">INT8 graph 2</text>
+
+  <rect x="596" y="78" width="140" height="64" rx="10" fill="#2ea44f" fill-opacity="0.18" stroke="#2ea44f" stroke-width="2.5"/>
+  <text x="666" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#2ea44f">decoder_step</text>
+  <text x="666" y="116" text-anchor="middle" font-size="10.5" fill="#7d8590">KV-cached — O(n)</text>
+  <text x="666" y="131" text-anchor="middle" font-size="10.5" fill="#7d8590">flat cost per token</text>
+
+  <!-- self loop -->
+  <path d="M 620 78 C 610 40 722 40 712 78" fill="none" stroke="#2ea44f" stroke-width="2" marker-end="url(#arrowg)"/>
+  <text x="666" y="48" text-anchor="middle" font-size="10.5" fill="#2ea44f">next token</text>
+
+  <!-- output -->
+  <rect x="784" y="86" width="100" height="48" rx="10" fill="#8957e5" fill-opacity="0.14" stroke="#8957e5" stroke-width="1.5"/>
+  <text x="834" y="108" text-anchor="middle" font-size="13" font-weight="600" fill="#8957e5">Text + TTS</text>
+  <text x="834" y="123" text-anchor="middle" font-size="10.5" fill="#7d8590">spoken back</text>
+
+  <!-- policy band -->
+  <rect x="176" y="196" width="560" height="62" rx="12" fill="#2ea44f" fill-opacity="0.10" stroke="#2ea44f" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="456" y="220" text-anchor="middle" font-size="13" font-weight="700" fill="#2ea44f">CpuCapabilities — read once at startup</text>
+  <text x="456" y="238" text-anchor="middle" font-size="11" fill="#7d8590">NEON / dotprod / i8mm / SME · core topology · cluster clocks</text>
+  <text x="456" y="252" text-anchor="middle" font-size="11" fill="#7d8590">sets intra-op threads · memory arena · KleidiAI on or off</text>
+
+  <g stroke="#2ea44f" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.8">
+    <line x1="364" y1="196" x2="364" y2="140"/>
+    <line x1="504" y1="196" x2="504" y2="140"/>
+    <line x1="666" y1="196" x2="666" y2="148"/>
+  </g>
+
+  <text x="450" y="284" text-anchor="middle" font-size="11" fill="#7d8590">Every stage runs on the phone's Arm CPU. No network permission is declared, so nothing can leave the device.</text>
+</svg>

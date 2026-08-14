@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" width="680" height="380" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+<text x="62" y="30" fill="#7d8590" font-size="16" font-weight="700">O(n2) falls, O(n) rises — the signature of a complexity-class change</text>
+<text x="62" y="50" fill="#7d8590" font-size="12" opacity="0.85">Per-token decode rate against sentence length, same device.</text>
+<line x1="62" y1="320.0" x2="550" y2="320.0" stroke="#8b949e" stroke-opacity="0.3"/>
+<text x="54" y="324.0" fill="#7d8590" font-size="11" text-anchor="end">0</text>
+<line x1="62" y1="257.5" x2="550" y2="257.5" stroke="#8b949e" stroke-opacity="0.3"/>
+<text x="54" y="261.5" fill="#7d8590" font-size="11" text-anchor="end">6.25</text>
+<line x1="62" y1="195.0" x2="550" y2="195.0" stroke="#8b949e" stroke-opacity="0.3"/>
+<text x="54" y="199.0" fill="#7d8590" font-size="11" text-anchor="end">12.5</text>
+<line x1="62" y1="132.5" x2="550" y2="132.5" stroke="#8b949e" stroke-opacity="0.3"/>
+<text x="54" y="136.5" fill="#7d8590" font-size="11" text-anchor="end">18.8</text>
+<line x1="62" y1="70.0" x2="550" y2="70.0" stroke="#8b949e" stroke-opacity="0.3"/>
+<text x="54" y="74.0" fill="#7d8590" font-size="11" text-anchor="end">25</text>
+<text x="16" y="195.0" fill="#7d8590" font-size="11" text-anchor="middle" transform="rotate(-90 16 195.0)">tokens / second</text>
+<text x="62.0" y="342.0" fill="#7d8590" font-size="12" text-anchor="middle">short sentence (2 tokens)</text>
+<text x="550.0" y="342.0" fill="#7d8590" font-size="12" text-anchor="middle">long sentence (12 tokens)</text>
+<path d="M 62.0 171.0 L 550.0 104.0" fill="none" stroke="#2ea44f" stroke-width="3" stroke-linecap="round"/>
+<circle cx="62.0" cy="171.0" r="5" fill="#2ea44f"/>
+<text x="62.0" y="159.0" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">14.9</text>
+<circle cx="550.0" cy="104.0" r="5" fill="#2ea44f"/>
+<text x="550.0" y="92.0" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">21.6</text>
+<text x="562.0" y="108.0" fill="#2ea44f" font-size="12" font-weight="700">V4</text>
+<path d="M 62.0 181.0 L 550.0 225.0" fill="none" stroke="#f85149" stroke-width="3" stroke-linecap="round"/>
+<circle cx="62.0" cy="181.0" r="5" fill="#f85149"/>
+<text x="62.0" y="169.0" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">13.9</text>
+<circle cx="550.0" cy="225.0" r="5" fill="#f85149"/>
+<text x="550.0" y="213.0" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">9.5</text>
+<text x="562.0" y="229.0" fill="#f85149" font-size="12" font-weight="700">v3.4.1</text>
+</svg>

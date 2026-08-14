@@ -1,0 +1,134 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Galaxy S26 Ultra — BhashaBridge V4 Android benchmark</title><style>
+:root{
+ --surface-1:#fcfcfb;--plane:#f9f9f7;--text-primary:#0b0b0b;--text-secondary:#52514e;
+ --muted:#898781;--grid:#e1e0d9;--baseline:#c3c2b7;--border:rgba(11,11,11,.10);
+ --series-1:#2a78d6;--series-2:#1baf7a;--series-3:#eb6834;--muted-bar:#c9c8c2;--good:#006300;
+}
+@media (prefers-color-scheme:dark){:root{
+ --surface-1:#1a1a19;--plane:#0d0d0d;--text-primary:#fff;--text-secondary:#c3c2b7;
+ --muted:#898781;--grid:#2c2c2a;--baseline:#383835;--border:rgba(255,255,255,.10);
+ --series-1:#3987e5;--series-2:#199e70;--series-3:#d95926;--muted-bar:#3a3a37;--good:#0ca30c;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--text-primary);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;font-size:15px}
+.wrap{max-width:900px;margin:0 auto;padding:32px 22px 80px}
+.hero{background:var(--surface-1);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:22px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:30px;margin:6px 0 4px;letter-spacing:-.02em}
+.sub{color:var(--text-secondary);font-size:14px}
+.idrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{font-size:12.5px;background:var(--plane);border:1px solid var(--border);border-radius:999px;padding:4px 11px;color:var(--text-secondary)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0 8px}
+.tile{background:var(--surface-1);border:1px solid var(--border);border-radius:14px;padding:16px 16px 14px}
+.tile .v{font-size:26px;font-weight:650;letter-spacing:-.02em}
+.tile .u{font-size:13px;color:var(--muted);font-weight:500}
+.tile .k{font-size:12.5px;color:var(--text-secondary);margin-top:3px}
+section{background:var(--surface-1);border:1px solid var(--border);border-radius:16px;padding:22px 26px;margin-top:18px}
+h2{font-size:19px;margin:0 0 4px;letter-spacing:-.01em}
+h2 .num{color:var(--series-1);font-variant-numeric:tabular-nums;margin-right:10px}
+.note{color:var(--text-secondary);font-size:13.5px;margin:2px 0 16px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin-top:6px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--grid)}
+th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.chartwrap{overflow-x:auto;margin-top:6px}
+.chart{width:100%;height:auto;min-width:420px;display:block}
+.ylab{fill:var(--text-secondary);font-size:12.5px}
+.vlab{fill:var(--text-primary);font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums}
+.axlab{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.grid{stroke:var(--grid);stroke-width:1}
+.legend{display:flex;gap:16px;margin:10px 0 2px;font-size:12.5px;color:var(--text-secondary)}
+.lg{display:inline-flex;align-items:center;gap:6px}
+.sw{width:11px;height:11px;border-radius:3px;display:inline-block}
+.good{color:var(--good);font-weight:600}
+.foot{color:var(--muted);font-size:12px;margin-top:26px;text-align:center}
+.callout{background:var(--plane);border-left:3px solid var(--series-1);border-radius:8px;padding:12px 15px;font-size:13.5px;color:var(--text-secondary);margin-top:12px}
+</style></head><body>
+<div class="wrap">
+ <div class="hero">
+  <div class="eyebrow">BhashaBridge V4 · Android on-device benchmark · EN→HI</div>
+  <h1>Samsung Galaxy S26 Ultra</h1>
+  <div class="sub">Hardware identifier <b>SM-S948B</b> · Android 16 (SDK 36) · Snapdragon 8 Elite Gen 5 (SM8850)</div>
+  <div class="idrow">
+   <span class="pill">ARMv9 · 8× Oryon (uniform IP)</span>
+   <span class="pill">i8mm ✔ · SVE2 ✔ · SME ✔ (no SME2)</span>
+   <span class="pill">ONNX Runtime 1.27.0</span>
+   <span class="pill">Policy: arm-adaptive · intra=2 · KleidiAI OFF</span>
+   <span class="pill">IndicTrans2 INT8 · 279.8 MB cache</span>
+  </div>
+ </div>
+ <div class="tiles">
+  <div class="tile"><div class="v">86 <span class="u">ms</span></div><div class="k">Long-sentence median (12 tok)</div></div>
+  <div class="tile"><div class="v">22 <span class="u">ms</span></div><div class="k">Short “Water.” median</div></div>
+  <div class="tile"><div class="v">535 <span class="u">tok/s</span></div><div class="k">Throughput (Android-suite scale)</div></div>
+  <div class="tile"><div class="v">2039 <span class="u">ms</span></div><div class="k">Cold engine init</div></div>
+  <div class="tile"><div class="v">154 <span class="u">MB</span></div><div class="k">Shipping-run PSS</div></div>
+  <div class="tile"><div class="v">+11 <span class="u">%</span></div><div class="k">Sustained drift (thread sweep)</div></div>
+ </div>
+ <section>
+  <h2><span class="num">§1</span>Device &amp; run configuration</h2>
+  <p class="note">Read off-device by the shipped benchmark (schema <code>bb-bench/1</code>), EN→HI,
+   optimized-ONNX artifact (2026-08-13 re-validation), 30 iterations. Sample output <b>पानी ।</b> — correct.</p>
+  <table>
+   <tr><th>Field</th><th>Value</th></tr>
+   <tr><td>Device</td><td>Samsung Galaxy S26 Ultra (SM-S948B)</td></tr>
+   <tr><td>SoC</td><td>Snapdragon 8 Elite Gen 5 (SM8850) · 8× Oryon uniform IP · 2 prime 4742 MHz + 6 perf 3629 MHz</td></tr>
+   <tr><td>ISA features</td><td>NEON, fp16, dot-product, i8mm, SVE2, SME (SME2 absent)</td></tr>
+   <tr><td>RAM / OS</td><td>12 GB · Android 16, SDK 36 · arm64-v8a</td></tr>
+   <tr><td>ORT policy</td><td>arm-adaptive(threads=2, noKleidiAI) · intra=2 · CPU arena off · affinity off</td></tr>
+   <tr><td>Model cache on disk</td><td>279.8 MB (optimized ONNX over shared blob; was 473 MB as .ort)</td></tr>
+  </table>
+ </section>
+ <section>
+  <h2><span class="num">§2</span>Startup — cold / warm / hot</h2>
+  <p class="note">Cold = one-time graph bake; warm/hot reuse the cache. (Warm/hot from the 2026-08-12 shipping run.)</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 186" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">Cold · engine init</text><rect x="176" y="14" width="408.0" height="18" rx="4" style="fill:var(--series-1)"/><text x="592.0" y="29.0" class="vlab">2091 ms</text><text x="164" y="63.0" text-anchor="end" class="ylab">Warm · engine init</text><rect x="176" y="48" width="125.7" height="18" rx="4" style="fill:var(--series-1)"/><text x="309.6585365853658" y="63.0" class="vlab">644 ms</text><text x="164" y="97.0" text-anchor="end" class="ylab">Hot · engine init</text><rect x="176" y="82" width="123.3" height="18" rx="4" style="fill:var(--series-1)"/><text x="307.3170731707317" y="97.0" class="vlab">632 ms</text><text x="164" y="131.0" text-anchor="end" class="ylab">Cold · model load</text><rect x="176" y="116" width="330.7" height="18" rx="4" style="fill:var(--series-1)"/><text x="514.7317073170732" y="131.0" class="vlab">1695 ms</text><text x="164" y="165.0" text-anchor="end" class="ylab">Cold · tokenizer</text><rect x="176" y="150" width="14.0" height="18" rx="4" style="fill:var(--series-1)"/><text x="198.0487804878049" y="165.0" class="vlab">72 ms</text></svg></div>
+ </section>
+ <section>
+  <h2><span class="num">§3</span>Translation latency by sentence</h2>
+  <p class="note">Median translate time, n=30. Directly comparable to the iPhone pages (same sentence, same INT8 model).</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 84" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">“Water.” (2 tok)</text><rect x="176" y="14" width="104.4" height="18" rx="4" style="fill:var(--series-1)"/><text x="288.37209302325584" y="29.0" class="vlab">22.0 ms  ±0.80</text><text x="164" y="63.0" text-anchor="end" class="ylab">“The weather…” (12 tok)</text><rect x="176" y="48" width="408.0" height="18" rx="4" style="fill:var(--series-1)"/><text x="592.0" y="63.0" class="vlab">86.0 ms  ±3.3</text></svg></div>
+ </section>
+ <section>
+  <h2><span class="num">§4</span>Thread sweep — intra-op ladder</h2>
+  <p class="note">8 uniform cores, so the policy derives and ships <b>2 threads</b> (the minimum here).
+   Degradation is monotonic above 2 — unlike the 2-perf-core iPhones, where 1 thread wins.</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 220" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">intra 1</text><rect x="176" y="14" width="253.3" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="437.33333333333337" y="29.0" class="vlab">95 ms</text><text x="164" y="63.0" text-anchor="end" class="ylab">intra 2 (ships)</text><rect x="176" y="48" width="242.7" height="18" rx="4" style="fill:var(--series-1)"/><text x="426.66666666666663" y="63.0" class="vlab">91 ms</text><text x="164" y="97.0" text-anchor="end" class="ylab">intra 3</text><rect x="176" y="82" width="266.7" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="450.6666666666667" y="97.0" class="vlab">100 ms</text><text x="164" y="131.0" text-anchor="end" class="ylab">intra 4</text><rect x="176" y="116" width="277.3" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="461.33333333333337" y="131.0" class="vlab">104 ms</text><text x="164" y="165.0" text-anchor="end" class="ylab">intra 6</text><rect x="176" y="150" width="304.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="488.0" y="165.0" class="vlab">114 ms</text><text x="164" y="199.0" text-anchor="end" class="ylab">intra 8</text><rect x="176" y="184" width="408.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="592.0" y="199.0" class="vlab">153 ms</text></svg></div>
+ </section>
+ <section>
+  <h2><span class="num">§5</span>KleidiAI / SME kernel A/B</h2>
+  <p class="note"><b class="good">SME OFF wins −8.9%</b> on this SME part — so the shipping policy sets
+   <code>disableKleidiAi = caps.sme</code>. This is the <b>opposite</b> of the iPhones, where SME ON helps.</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 84" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">KleidiAI / SME OFF (ships)</text><rect x="176" y="14" width="365.5" height="18" rx="4" style="fill:var(--series-1)"/><text x="549.5" y="29.0" class="vlab">86 ms</text><text x="164" y="63.0" text-anchor="end" class="ylab">KleidiAI / SME ON</text><rect x="176" y="48" width="408.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="592.0" y="63.0" class="vlab">96 ms</text></svg></div>
+ </section>
+ <section>
+  <h2><span class="num">§6</span>Latency under memory pressure</h2>
+  <p class="note">Translate median as available memory is driven 4.07 GB → 2.58 GB. Flat within 11%,
+   zero swap-ins — the mmap path holds.</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 230" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><line x1="54" y1="190.0" x2="660" y2="190.0" class="grid"/><text x="46" y="194.0" text-anchor="end" class="axlab">80</text><line x1="54" y1="132.0" x2="660" y2="132.0" class="grid"/><text x="46" y="136.0" text-anchor="end" class="axlab">84</text><line x1="54" y1="74.0" x2="660" y2="74.0" class="grid"/><text x="46" y="78.0" text-anchor="end" class="axlab">89</text><line x1="54" y1="16.0" x2="660" y2="16.0" class="grid"/><text x="46" y="20.0" text-anchor="end" class="axlab">93</text><polyline points="54.0,161.0 175.2,122.3 296.4,122.3 417.6,109.4 538.8,135.2 660.0,45.0" fill="none" style="stroke:var(--series-1)" stroke-width="2.5" stroke-linejoin="round"/><circle cx="54.0" cy="161.0" r="4.5" style="fill:var(--surface-1);stroke:var(--series-1)" stroke-width="2.5"/><text x="54.0" y="149.0" text-anchor="middle" class="vlab">82</text><text x="54.0" y="212.0" text-anchor="middle" class="axlab">W1</text><circle cx="175.2" cy="122.3" r="4.5" style="fill:var(--surface-1);stroke:var(--series-1)" stroke-width="2.5"/><text x="175.2" y="110.3" text-anchor="middle" class="vlab">85</text><text x="175.2" y="212.0" text-anchor="middle" class="axlab">W2</text><circle cx="296.4" cy="122.3" r="4.5" style="fill:var(--surface-1);stroke:var(--series-1)" stroke-width="2.5"/><text x="296.4" y="110.3" text-anchor="middle" class="vlab">85</text><text x="296.4" y="212.0" text-anchor="middle" class="axlab">W3</text><circle cx="417.6" cy="109.4" r="4.5" style="fill:var(--surface-1);stroke:var(--series-1)" stroke-width="2.5"/><text x="417.6" y="97.4" text-anchor="middle" class="vlab">86</text><text x="417.6" y="212.0" text-anchor="middle" class="axlab">W4</text><circle cx="538.8" cy="135.2" r="4.5" style="fill:var(--surface-1);stroke:var(--series-1)" stroke-width="2.5"/><text x="538.8" y="123.2" text-anchor="middle" class="vlab">84</text><text x="538.8" y="212.0" text-anchor="middle" class="axlab">W5</text><circle cx="660.0" cy="45.0" r="4.5" style="fill:var(--surface-1);stroke:var(--series-1)" stroke-width="2.5"/><text x="660.0" y="33.0" text-anchor="middle" class="vlab">91</text><text x="660.0" y="212.0" text-anchor="middle" class="axlab">W6</text></svg></div>
+ </section>
+ <section>
+  <h2><span class="num">§7</span>Memory</h2>
+  <table>
+   <tr><th>Metric</th><th class="n">Value</th></tr>
+   <tr><td>Shipping-run PSS (2026-08-12)</td><td class="n">153.7 MB</td></tr>
+   <tr><td>Native heap</td><td class="n">71.0 MB</td></tr>
+   <tr><td>Peak PSS under 100 direction switches</td><td class="n">529.4 MB</td></tr>
+   <tr><td>Model cache on disk</td><td class="n">279.8 MB</td></tr>
+  </table>
+ </section>
+ <section>
+  <h2><span class="num">§8</span>Cross-device comparison</h2>
+  <p class="note">The Android flagship (highlighted) against the three iPhones. Same sentence, same INT8 model.</p>
+  <div style="font-size:13px;color:var(--muted);margin:8px 0 4px">Long-sentence median latency — ms (lower better)</div>
+  <div class="chartwrap"><svg viewBox="0 0 680 152" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">Galaxy S26 Ultra · Android</text><rect x="176" y="14" width="165.0" height="18" rx="4" style="fill:var(--series-1)"/><text x="348.95388173792037" y="29.0" class="vlab">86 ms</text><text x="164" y="63.0" text-anchor="end" class="ylab">iPhone 16</text><rect x="176" y="48" width="305.9" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="489.8686123151274" y="63.0" class="vlab">159 ms</text><text x="164" y="97.0" text-anchor="end" class="ylab">iPhone 17</text><rect x="176" y="82" width="322.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="505.99573135759755" y="97.0" class="vlab">168 ms</text><text x="164" y="131.0" text-anchor="end" class="ylab">iPhone 16 Pro Max</text><rect x="176" y="116" width="408.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="592.0" y="131.0" class="vlab">213 ms</text></svg></div>
+  <div style="font-size:13px;color:var(--muted);margin:18px 0 4px">Throughput — Android-suite-compatible tok/s (higher better)</div>
+  <div class="chartwrap"><svg viewBox="0 0 680 152" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">Galaxy S26 Ultra · Android</text><rect x="176" y="14" width="408.0" height="18" rx="4" style="fill:var(--series-2)"/><text x="592.0" y="29.0" class="vlab">535.1</text><text x="164" y="63.0" text-anchor="end" class="ylab">iPhone 16</text><rect x="176" y="48" width="219.5" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="403.50643991777235" y="63.0" class="vlab">287.887</text><text x="164" y="97.0" text-anchor="end" class="ylab">iPhone 17</text><rect x="176" y="82" width="211.8" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="395.76046346477295" y="97.0" class="vlab">277.728</text><text x="164" y="131.0" text-anchor="end" class="ylab">iPhone 16 Pro Max</text><rect x="176" y="116" width="169.3" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="353.3074191739862" y="131.0" class="vlab">222.05</text></svg></div>
+  <div class="callout">The S26 Ultra leads every iPhone by ~2–2.5× on the same workload — it runs
+   2 intra-op threads across 8 uniform Oryon cores, where each iPhone is single-threaded on 2 performance cores.
+   The two platforms also disagree on SME: it helps on Apple, and is disabled by policy on this Android part.</div>
+ </section>
+ <div class="foot">BhashaBridge V4 · Android EN→HI · ORT 1.27.0 · schema bb-bench/1 · source: s26ultra_revalidation_2026-08-13 · compiled 2026-08-13</div>
+</div>
+</body></html>

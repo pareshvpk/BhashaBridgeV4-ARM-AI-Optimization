@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 340" width="520" height="340" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+<text x="24" y="30" fill="#7d8590" font-size="16" font-weight="700">Where v3.4.1's 27-second startup went</text>
+<text x="24" y="50" fill="#7d8590" font-size="12" opacity="0.85">The model was never the bottleneck.</text>
+<path d="M 160 190 L 160.00 85.00 A 105 105 0 0 1 166.59 294.79 Z" fill="#f85149" fill-opacity="0.9" stroke="#f85149" stroke-width="1"/>
+<text x="225.1" y="192.0" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">49%</text>
+<path d="M 160 190 L 166.59 294.79 A 105 105 0 0 1 127.55 90.14 Z" fill="#d29922" fill-opacity="0.9" stroke="#d29922" stroke-width="1"/>
+<text x="96.1" y="206.2" fill="#ffffff" font-size="13" font-weight="700" text-anchor="middle">46%</text>
+<path d="M 160 190 L 127.55 90.14 A 105 105 0 0 1 160.00 85.00 Z" fill="#8b949e" fill-opacity="0.9" stroke="#8b949e" stroke-width="1"/>
+<rect x="310" y="99" width="13" height="13" rx="3" fill="#f85149"/>
+<text x="331" y="110" fill="#7d8590" font-size="13">Character-at-a-time JSON tokenizer parse  ~49%</text>
+<rect x="310" y="125" width="13" height="13" rx="3" fill="#d29922"/>
+<text x="331" y="136" fill="#7d8590" font-size="13">ORT building sessions  ~46%</text>
+<rect x="310" y="151" width="13" height="13" rx="3" fill="#8b949e"/>
+<text x="331" y="162" fill="#7d8590" font-size="13">Everything else, incl. 1.8 s asset unpack  ~5%</text>
+</svg>

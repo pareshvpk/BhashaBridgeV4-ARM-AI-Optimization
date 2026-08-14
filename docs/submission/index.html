@@ -1,0 +1,146 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BhashaBridge V4 — Arm AI Optimization Challenge submission</title>
+<style>
+:root{--surface-1:#fcfcfb;--plane:#f9f9f7;--text-primary:#0b0b0b;--text-secondary:#52514e;
+--muted:#898781;--grid:#e1e0d9;--border:rgba(11,11,11,.10);--series-1:#2a78d6;--series-2:#1baf7a;
+--series-3:#eb6834;--good:#006300;}
+@media (prefers-color-scheme:dark){:root{--surface-1:#1a1a19;--plane:#0d0d0d;--text-primary:#fff;
+--text-secondary:#c3c2b7;--muted:#898781;--grid:#2c2c2a;--border:rgba(255,255,255,.10);
+--series-1:#3987e5;--series-2:#199e70;--series-3:#d95926;--good:#0ca30c;}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--text-primary);
+font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55;font-size:15px}
+.wrap{max-width:960px;margin:0 auto;padding:36px 22px 90px}
+.hero{background:var(--surface-1);border:1px solid var(--border);border-radius:18px;padding:32px 32px 28px}
+.eyebrow{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:34px;margin:8px 0 6px;letter-spacing:-.02em}
+.tag{color:var(--text-secondary);font-size:15px;max-width:64ch}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pill{font-size:12.5px;background:var(--plane);border:1px solid var(--border);border-radius:999px;padding:5px 12px;color:var(--text-secondary)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0 4px}
+.tile{background:var(--surface-1);border:1px solid var(--border);border-radius:14px;padding:16px}
+.tile .v{font-size:25px;font-weight:650;letter-spacing:-.02em}
+.tile .v small{font-size:13px;color:var(--muted);font-weight:500}
+.tile .k{font-size:12.5px;color:var(--text-secondary);margin-top:3px}
+h2{font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:34px 0 12px;font-weight:700}
+.cards{display:grid;gap:14px}
+.grid2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.grid3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+a.card{display:block;text-decoration:none;color:inherit;background:var(--surface-1);
+border:1px solid var(--border);border-radius:16px;padding:20px 22px;transition:border-color .15s,transform .1s}
+a.card:hover{border-color:var(--series-1);transform:translateY(-2px)}
+.card .kind{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--series-1);font-weight:700}
+.card h3{font-size:18px;margin:6px 0 6px;letter-spacing:-.01em}
+.card p{font-size:13.5px;color:var(--text-secondary);margin:0}
+.card .metric{margin-top:12px;font-size:13px;color:var(--text-primary);font-variant-numeric:tabular-nums}
+.card .metric b{color:var(--series-1)}
+.lead{border-color:var(--series-1);border-width:1.5px}
+.doc .kind{color:var(--series-2)}
+.doc.card:hover{border-color:var(--series-2)}
+.base .kind{color:var(--series-3)}
+.base.card:hover{border-color:var(--series-3)}
+.foot{color:var(--muted);font-size:12px;margin-top:40px;text-align:center;line-height:1.7}
+</style>
+<div class="wrap">
+
+ <div class="hero">
+  <div class="eyebrow">Arm AI Optimization Challenge · Track 1 · On-device inference</div>
+  <h1>BhashaBridge V4</h1>
+  <p class="tag">A fully offline English⇄Hindi translation and speech assistant that runs entirely on
+   the Arm CPU — no server, no network permission, no data leaving the device. Every number in this
+   folder was measured on real hardware by a benchmark that ships inside the app.</p>
+  <div class="pills">
+   <span class="pill">ONNX Runtime 1.27.0</span>
+   <span class="pill">KleidiAI SME</span>
+   <span class="pill">XNNPACK probed</span>
+   <span class="pill">INT8 · KV-cache</span>
+   <span class="pill">Android + iOS on Arm</span>
+   <span class="pill">Offline (no INTERNET permission)</span>
+  </div>
+  <div class="tiles">
+   <div class="tile"><div class="v">O(n²)→O(n)</div><div class="k">Decode complexity rewrite</div></div>
+   <div class="tile"><div class="v">77–86 <small>ms</small></div><div class="k">Full-sentence translate (flagship)</div></div>
+   <div class="tile"><div class="v">−38% <small>mem</small></div><div class="k">Process memory, no latency cost</div></div>
+   <div class="tile"><div class="v">12</div><div class="k">Devices validated · Armv8.0→ARMv9</div></div>
+  </div>
+ </div>
+
+ <h2>Start here</h2>
+ <div class="cards grid2">
+  <a class="card lead" href="BhashaBridge V4 - Project Write-Up.docx">
+   <div class="kind">Submission write-up · Word document</div>
+   <h3>The full submission</h3>
+   <p>What it is, why it exists, how the engine works, how it leverages Arm silicon, the measured
+    optimization story, cross-platform findings, validation, and reusable takeaways.</p>
+   <div class="metric">Read this first →</div>
+  </a>
+  <a class="card lead" href="version_comparison_v3.4_v4_ios.html">
+   <div class="kind">Result · interactive charts</div>
+   <h3>v3.4.1 → V4 → V4 (iOS)</h3>
+   <p>The before/after that proves the optimization: latency, decode complexity, stability, startup,
+    memory, artifact size, correctness — with charts.</p>
+   <div class="metric"><b>17.6×</b> long-sentence · <b>−80%</b> jitter · <b>31%→0%</b> truncation</div>
+  </a>
+ </div>
+
+ <h2>Per-device benchmarks — V4</h2>
+ <div class="cards grid3">
+  <a class="card" href="S26_Ultra_benchmark.html">
+   <div class="kind">Android flagship</div>
+   <h3>Galaxy S26 Ultra</h3>
+   <p>Best-performing target · 8 uniform cores · SME present.</p>
+   <div class="metric"><b>86 ms</b> long · <b>535</b> tok/s</div>
+  </a>
+  <a class="card" href="iPhone_16_benchmark.html">
+   <div class="kind">iOS · fastest iPhone</div>
+   <h3>iPhone 16</h3>
+   <p>Leads the iOS set on latency and throughput.</p>
+   <div class="metric"><b>159 ms</b> long · <b>288</b> tok/s</div>
+  </a>
+  <a class="card" href="iPhone_17_benchmark.html">
+   <div class="kind">iOS · most stable</div>
+   <h3>iPhone 17</h3>
+   <p>Flattest sustained-load profile of all four.</p>
+   <div class="metric"><b>168 ms</b> long · <b>+0.2%</b> drift</div>
+  </a>
+  <a class="card" href="iPhone_16_Pro_Max_benchmark.html">
+   <div class="kind">iOS</div>
+   <h3>iPhone 16 Pro Max</h3>
+   <p>Older-OS run; trails on a thermal/OS effect, not hardware.</p>
+   <div class="metric"><b>213 ms</b> long · <b>222</b> tok/s</div>
+  </a>
+ </div>
+
+ <h2>Baseline evidence — v3.4.1</h2>
+ <div class="cards grid2">
+  <a class="card base" href="V2338_V3.4_benchmark.html">
+   <div class="kind">Before · v3.4.1 · interactive</div>
+   <h3>v3.4.1 on-device baseline</h3>
+   <p>The un-optimized starting point — no KV cache, O(n²) decode — measured on real hardware so the
+    V4 gains are anchored to a real before.</p>
+   <div class="metric"><b>867 ms</b> long · <b>22.8</b> tok/s · <b>840 MB</b> · 8.8 s cold</div>
+  </a>
+ </div>
+
+ <h2>Submission documents (Word)</h2>
+ <div class="cards grid2">
+  <a class="card doc" href="BhashaBridge V4 - Project Write-Up.docx">
+   <div class="kind">Word document</div>
+   <h3>Project Write-Up</h3>
+   <p>The complete submission: overview, functionality, technical implementation, setup/build/run/validate, licensing, and limitations.</p>
+  </a>
+  <a class="card doc" href="BhashaBridge V4 - Benchmark Comparison.docx">
+   <div class="kind">Word document</div>
+   <h3>Benchmark Comparison</h3>
+   <p>v3.4.1 → V4 → V4 (iOS), technical benchmarks only — hardware-agnostic, numbers and tables.</p>
+  </a>
+ </div>
+
+ <div class="foot">
+  BhashaBridge V4 · EN⇄HI · fully offline on-device translation + speech · ONNX Runtime 1.27.0 ·
+  KleidiAI SME · Android &amp; iOS on Arm<br>
+  Every figure measured on-device by the shipped benchmark · compiled 2026-08-14
+ </div>
+
+</div>

@@ -1,0 +1,165 @@
+<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>iPhone 16 Pro Max — BhashaBridge V4 iOS benchmark</title><style>
+:root{
+ --surface-1:#fcfcfb;--plane:#f9f9f7;--text-primary:#0b0b0b;--text-secondary:#52514e;
+ --muted:#898781;--grid:#e1e0d9;--baseline:#c3c2b7;--border:rgba(11,11,11,.10);
+ --series-1:#2a78d6;--series-2:#1baf7a;--series-3:#eb6834;--muted-bar:#c9c8c2;--good:#006300;
+}
+@media (prefers-color-scheme:dark){:root{
+ --surface-1:#1a1a19;--plane:#0d0d0d;--text-primary:#fff;--text-secondary:#c3c2b7;
+ --muted:#898781;--grid:#2c2c2a;--baseline:#383835;--border:rgba(255,255,255,.10);
+ --series-1:#3987e5;--series-2:#199e70;--series-3:#d95926;--muted-bar:#3a3a37;--good:#0ca30c;
+}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--plane);color:var(--text-primary);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;font-size:15px}
+.wrap{max-width:900px;margin:0 auto;padding:32px 22px 80px}
+.hero{background:var(--surface-1);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:22px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:30px;margin:6px 0 4px;letter-spacing:-.02em}
+.sub{color:var(--text-secondary);font-size:14px}
+.idrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{font-size:12.5px;background:var(--plane);border:1px solid var(--border);border-radius:999px;padding:4px 11px;color:var(--text-secondary)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0 8px}
+.tile{background:var(--surface-1);border:1px solid var(--border);border-radius:14px;padding:16px 16px 14px}
+.tile .v{font-size:26px;font-weight:650;letter-spacing:-.02em}
+.tile .u{font-size:13px;color:var(--muted);font-weight:500}
+.tile .k{font-size:12.5px;color:var(--text-secondary);margin-top:3px}
+section{background:var(--surface-1);border:1px solid var(--border);border-radius:16px;padding:22px 26px;margin-top:18px}
+h2{font-size:19px;margin:0 0 4px;letter-spacing:-.01em}
+h2 .num{color:var(--series-1);font-variant-numeric:tabular-nums;margin-right:10px}
+.note{color:var(--text-secondary);font-size:13.5px;margin:2px 0 16px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin-top:6px}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--grid)}
+th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.chartwrap{overflow-x:auto;margin-top:6px}
+.chart{width:100%;height:auto;min-width:420px;display:block}
+.ylab{fill:var(--text-secondary);font-size:12.5px}
+.vlab{fill:var(--text-primary);font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums}
+.axlab{fill:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.grid{stroke:var(--grid);stroke-width:1}
+.legend{display:flex;gap:16px;margin:10px 0 2px;font-size:12.5px;color:var(--text-secondary)}
+.lg{display:inline-flex;align-items:center;gap:6px}
+.sw{width:11px;height:11px;border-radius:3px;display:inline-block}
+.good{color:var(--good);font-weight:600}
+.foot{color:var(--muted);font-size:12px;margin-top:26px;text-align:center}
+.callout{background:var(--plane);border-left:3px solid var(--series-1);border-radius:8px;padding:12px 15px;font-size:13.5px;color:var(--text-secondary);margin-top:12px}
+</style></head><body>
+<div class="wrap">
+ <div class="hero">
+  <div class="eyebrow">BhashaBridge V4 · iOS on-device benchmark · EN→HI</div>
+  <h1>iPhone 16 Pro Max</h1>
+  <div class="sub">Hardware identifier <b>iPhone17,2</b> · iOS 18.7.8 · Apple A18 Pro (inferred from tier)</div>
+  <div class="idrow">
+   <span class="pill">ARMv9 · 6 cores (2P + 4E)</span>
+   <span class="pill">i8mm ✔ · SME ✔ · SME2 ✔</span>
+   <span class="pill">ONNX Runtime 1.27.0</span>
+   <span class="pill">Policy: apple-adaptive · intra=1</span>
+   <span class="pill">IndicTrans2 INT8 · 272 MB staged</span>
+  </div>
+ </div>
+
+ <div class="tiles">
+  <div class="tile"><div class="v">216 <span class="u">ms</span></div><div class="k">Long-sentence median (12 tok)</div></div>
+  <div class="tile"><div class="v">52 <span class="u">ms</span></div><div class="k">Short “Water.” median</div></div>
+  <div class="tile"><div class="v">222 <span class="u">tok/s</span></div><div class="k">Throughput (Android-suite scale)</div></div>
+  <div class="tile"><div class="v">1176 <span class="u">ms</span></div><div class="k">Cold engine init</div></div>
+  <div class="tile"><div class="v">1074 <span class="u">MB</span></div><div class="k">Peak memory footprint</div></div>
+  <div class="tile"><div class="v">+11.1 <span class="u">%</span></div><div class="k">Sustained-load drift</div></div>
+ </div>
+
+ <section>
+  <h2><span class="num">§1</span>Device &amp; run configuration</h2>
+  <p class="note">Every number on this page was read off-device by the shipped iOS harness
+   (schema <code>bb-ios/1</code>), EN→HI, 30 iterations, 5 warm-ups, counterbalanced. Sample
+   output <b>पानी ।</b> — correct.</p>
+  <table>
+   <tr><th>Field</th><th>Value</th></tr>
+   <tr><td>Submission label</td><td>iPhone 16 Pro Max</td></tr>
+   <tr><td>Reported hardware ID</td><td>iPhone17,2</td></tr>
+   <tr><td>OS at run</td><td>iOS 18.7.8</td></tr>
+   <tr><td>CPU</td><td>ARMv9 · 6 cores · 2 performance + 4 efficiency</td></tr>
+   <tr><td>ISA features</td><td>NEON, fp16, bf16, dot-product, i8mm, SME, SME2 (SVE flag unavailable)</td></tr>
+   <tr><td>ORT policy</td><td>apple-adaptive(threads=1, affinity unavailable) · intra=1 · inter=1 · CPU arena off</td></tr>
+   <tr><td>Model</td><td>IndicTrans2 distilled 200M · INT8 · encoder + decoder_init + decoder_step + weights.bin</td></tr>
+   <tr><td>Staged model size</td><td>272.0 MB (285,230,912 B) — SHA-256 identical across all three iPhones</td></tr>
+   <tr><td>Battery / power</td><td>60% (unplugged mid-run)</td></tr>
+   <tr><td>Thermal state</td><td>nominal → fair</td></tr>
+  </table>
+ </section>
+
+ <section>
+  <h2><span class="num">§2</span>Startup — cold / warm / hot</h2>
+  <p class="note">Engine init = tokenizer + model load. Cold clears caches; warm and hot reuse the staged model.</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 186" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">Cold · engine init</text><rect x="176" y="14" width="399.2" height="18" rx="4" style="fill:var(--series-1)"/><text x="583.1519348533225" y="29.0" class="vlab">1176 ms</text><text x="164" y="63.0" text-anchor="end" class="ylab">Warm · engine init</text><rect x="176" y="48" width="396.5" height="18" rx="4" style="fill:var(--series-1)"/><text x="580.4803019674316" y="63.0" class="vlab">1168 ms</text><text x="164" y="97.0" text-anchor="end" class="ylab">Hot · engine init</text><rect x="176" y="82" width="408.0" height="18" rx="4" style="fill:var(--series-1)"/><text x="592.0" y="97.0" class="vlab">1202 ms</text><text x="164" y="131.0" text-anchor="end" class="ylab">Cold · model load</text><rect x="176" y="116" width="273.9" height="18" rx="4" style="fill:var(--series-1)"/><text x="457.9409995181902" y="131.0" class="vlab">807 ms</text><text x="164" y="165.0" text-anchor="end" class="ylab">Cold · tokenizer</text><rect x="176" y="150" width="125.2" height="18" rx="4" style="fill:var(--series-1)"/><text x="309.21093533513243" y="165.0" class="vlab">369 ms</text></svg></div>
+ </section>
+
+ <section>
+  <h2><span class="num">§3</span>Translation latency by sentence</h2>
+  <p class="note">Median translate time, n=30 each. Error figure is standard deviation.</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 84" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">“Water.” (2 tok)</text><rect x="176" y="14" width="97.8" height="18" rx="4" style="fill:var(--series-1)"/><text x="281.76038195007766" y="29.0" class="vlab">51.7 ms  ±0.43</text><text x="164" y="63.0" text-anchor="end" class="ylab">“The weather…” (12 tok)</text><rect x="176" y="48" width="408.0" height="18" rx="4" style="fill:var(--series-1)"/><text x="592.0" y="63.0" class="vlab">215.7 ms  ±1.46</text></svg></div>
+  <table style="margin-top:14px">
+   <tr><th>Sentence</th><th class="n">median</th><th class="n">p95</th><th class="n">p99</th><th class="n">stdev</th></tr>
+   <tr><td>“Water.” (2 tok)</td><td class="n">51.7</td><td class="n">—</td><td class="n">—</td><td class="n">0.43</td></tr>
+   <tr><td>“The weather is very nice today…” (12 tok)</td><td class="n">215.7</td><td class="n">217.2</td><td class="n">218.0</td><td class="n">1.46</td></tr>
+   <tr><td>First translation (incl. graph warm)</td><td class="n">214.0</td><td class="n"></td><td class="n"></td><td class="n"></td></tr>
+  </table>
+ </section>
+
+ <section>
+  <h2><span class="num">§4</span>Per-stage graph breakdown</h2>
+  <p class="note">Median milliseconds per ONNX graph, single decode step. Decoder-step is the autoregressive hot loop.</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 118" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">Encoder</text><rect x="176" y="14" width="408.0" height="18" rx="4" style="fill:var(--series-2)"/><text x="592.0" y="29.0" class="vlab">5.41 ms</text><text x="164" y="63.0" text-anchor="end" class="ylab">Decoder-init</text><rect x="176" y="48" width="355.8" height="18" rx="4" style="fill:var(--series-2)"/><text x="539.8411232218732" y="63.0" class="vlab">4.72 ms</text><text x="164" y="97.0" text-anchor="end" class="ylab">Decoder-step</text><rect x="176" y="82" width="282.0" height="18" rx="4" style="fill:var(--series-2)"/><text x="465.97450581932384" y="97.0" class="vlab">3.74 ms</text></svg></div>
+ </section>
+
+ <section>
+  <h2><span class="num">§5</span>Thread sweep — 1 vs 2 intra-op threads</h2>
+  <p class="note">Only 2 performance cores exist, so the adaptive policy ships <b>1 thread</b>. Adding a
+   second thread is slower on both sentence lengths — confirming the shipping choice.</p>
+  <div class="legend"><span class="lg"><span class="sw" style="background:var(--series-1)"></span>Long sentence</span><span class="lg"><span class="sw" style="background:var(--series-2)"></span>Short sentence</span></div>
+  <div class="chartwrap"><svg viewBox="0 0 680 108" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="35.0" text-anchor="end" class="ylab">1 thread (ships)</text><rect x="176" y="12.0" width="367.4" height="14.0" rx="4" style="fill:var(--series-1)"/><text x="551.4032250175272" y="23.0" class="vlab">220.921</text><rect x="176" y="28.0" width="87.6" height="14.0" rx="4" style="fill:var(--series-2)"/><text x="271.64951983434696" y="39.0" class="vlab">52.704</text><text x="164" y="81.0" text-anchor="end" class="ylab">2 threads</text><rect x="176" y="58.0" width="408.0" height="14.0" rx="4" style="fill:var(--series-1)"/><text x="592.0" y="69.0" class="vlab">245.332</text><rect x="176" y="74.0" width="99.1" height="14.0" rx="4" style="fill:var(--series-2)"/><text x="283.08466893841813" y="85.0" class="vlab">59.58</text></svg></div>
+ </section>
+
+ <section>
+  <h2><span class="num">§6</span>KleidiAI / SME kernel A/B</h2>
+  <p class="note">Long-sentence median with the SME int8 kernel forced on vs off.
+   <b class="good">ON is 3.4% faster</b> here — the opposite of the Android S26 Ultra,
+   where SME-off wins. On Apple silicon the KleidiAI SME path helps.</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 84" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">KleidiAI / SME ON</text><rect x="176" y="14" width="394.6" height="18" rx="4" style="fill:var(--series-1)"/><text x="578.5815928627135" y="29.0" class="vlab">225.7 ms</text><text x="164" y="63.0" text-anchor="end" class="ylab">KleidiAI / SME OFF</text><rect x="176" y="48" width="408.0" height="18" rx="4" style="fill:var(--series-1)"/><text x="592.0" y="63.0" class="vlab">233.4 ms</text></svg></div>
+ </section>
+
+ <section>
+  <h2><span class="num">§7</span>Sustained load &amp; thermal drift</h2>
+  <p class="note">Six consecutive load windows, long-sentence median per window. Drift =
+   last ÷ first = <b>1.111</b> (+11.1%). Thermal: nominal → fair.</p>
+  <div class="chartwrap"><svg viewBox="0 0 680 230" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><line x1="54" y1="190.0" x2="660" y2="190.0" class="grid"/><text x="46" y="194.0" text-anchor="end" class="axlab">217</text><line x1="54" y1="132.0" x2="660" y2="132.0" class="grid"/><text x="46" y="136.0" text-anchor="end" class="axlab">230</text><line x1="54" y1="74.0" x2="660" y2="74.0" class="grid"/><text x="46" y="78.0" text-anchor="end" class="axlab">242</text><line x1="54" y1="16.0" x2="660" y2="16.0" class="grid"/><text x="46" y="20.0" text-anchor="end" class="axlab">255</text><polyline points="54.0,161.0 175.2,158.1 296.4,156.5 417.6,154.8 538.8,62.7 660.0,45.0" fill="none" style="stroke:var(--series-1)" stroke-width="2.5" stroke-linejoin="round"/><circle cx="54.0" cy="161.0" r="4.5" style="fill:var(--surface-1);stroke:var(--series-1)" stroke-width="2.5"/><text x="54.0" y="149.0" text-anchor="middle" class="vlab">223.66</text><text x="54.0" y="212.0" text-anchor="middle" class="axlab">W1</text><circle cx="175.2" cy="158.1" r="4.5" style="fill:var(--surface-1);stroke:var(--series-1)" stroke-width="2.5"/><text x="175.2" y="146.1" text-anchor="middle" class="vlab">224.284</text><text x="175.2" y="212.0" text-anchor="middle" class="axlab">W2</text><circle cx="296.4" cy="156.5" r="4.5" style="fill:var(--surface-1);stroke:var(--series-1)" stroke-width="2.5"/><text x="296.4" y="144.5" text-anchor="middle" class="vlab">224.615</text><text x="296.4" y="212.0" text-anchor="middle" class="axlab">W3</text><circle cx="417.6" cy="154.8" r="4.5" style="fill:var(--surface-1);stroke:var(--series-1)" stroke-width="2.5"/><text x="417.6" y="142.8" text-anchor="middle" class="vlab">224.992</text><text x="417.6" y="212.0" text-anchor="middle" class="axlab">W4</text><circle cx="538.8" cy="62.7" r="4.5" style="fill:var(--surface-1);stroke:var(--series-1)" stroke-width="2.5"/><text x="538.8" y="50.7" text-anchor="middle" class="vlab">244.745</text><text x="538.8" y="212.0" text-anchor="middle" class="axlab">W5</text><circle cx="660.0" cy="45.0" r="4.5" style="fill:var(--surface-1);stroke:var(--series-1)" stroke-width="2.5"/><text x="660.0" y="33.0" text-anchor="middle" class="vlab">248.55</text><text x="660.0" y="212.0" text-anchor="middle" class="axlab">W6</text></svg></div>
+ </section>
+
+ <section>
+  <h2><span class="num">§8</span>Memory</h2>
+  <table>
+   <tr><th>Metric</th><th class="n">Value</th></tr>
+   <tr><td>Peak physical footprint (after run)</td><td class="n">1074 MB</td></tr>
+   <tr><td>Resident set size (after run)</td><td class="n">1202 MB</td></tr>
+   <tr><td>Staged model on disk</td><td class="n">272.0 MB</td></tr>
+  </table>
+ </section>
+
+ <section>
+  <h2><span class="num">§9</span>Cross-device comparison</h2>
+  <p class="note">This device (highlighted) against the other two iPhones and the Android
+   flagship (Galaxy S26 Ultra). Same sentence, same INT8 model. Lower is better for latency.</p>
+  <div style="font-size:13px;color:var(--muted);margin:8px 0 4px">Long-sentence median latency — ms (lower better)</div>
+  <div class="chartwrap"><svg viewBox="0 0 680 152" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">Galaxy S26 Ultra · Android</text><rect x="176" y="14" width="165.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="348.95388173792037" y="29.0" class="vlab">86 ms</text><text x="164" y="63.0" text-anchor="end" class="ylab">iPhone 16</text><rect x="176" y="48" width="305.9" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="489.8686123151274" y="63.0" class="vlab">159.467 ms</text><text x="164" y="97.0" text-anchor="end" class="ylab">iPhone 17</text><rect x="176" y="82" width="322.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="505.99573135759755" y="97.0" class="vlab">167.875 ms</text><text x="164" y="131.0" text-anchor="end" class="ylab">iPhone 16 Pro Max</text><rect x="176" y="116" width="408.0" height="18" rx="4" style="fill:var(--series-1)"/><text x="592.0" y="131.0" class="vlab">212.714 ms</text></svg></div>
+  <div style="font-size:13px;color:var(--muted);margin:18px 0 4px">Throughput — Android-suite-compatible tok/s (higher better)</div>
+  <div class="chartwrap"><svg viewBox="0 0 680 152" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">Galaxy S26 Ultra · Android</text><rect x="176" y="14" width="408.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="592.0" y="29.0" class="vlab">535.1</text><text x="164" y="63.0" text-anchor="end" class="ylab">iPhone 16</text><rect x="176" y="48" width="219.5" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="403.50643991777235" y="63.0" class="vlab">287.887</text><text x="164" y="97.0" text-anchor="end" class="ylab">iPhone 17</text><rect x="176" y="82" width="211.8" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="395.76046346477295" y="97.0" class="vlab">277.728</text><text x="164" y="131.0" text-anchor="end" class="ylab">iPhone 16 Pro Max</text><rect x="176" y="116" width="169.3" height="18" rx="4" style="fill:var(--series-2)"/><text x="353.3074191739862" y="131.0" class="vlab">222.05</text></svg></div>
+  <div class="callout">The Android S26 Ultra is ~2–2.5× faster on the same workload — it runs 2 threads
+   on 8 uniform cores, while every iPhone here is single-threaded on 2 performance cores. Among the
+   iPhones, the base <b>iPhone 16 (iOS 27.0)</b> leads and the <b>iPhone 16 Pro Max (iOS 18.7.8)</b>
+   trails — a thermal + OS effect, not a hardware ranking: the Pro Max hit “fair” thermal and unplugged
+   mid-run (drift +11.1%), while the iPhone 17 was the most stable (drift +0.2%).</div>
+ </section>
+
+ <div class="foot">BhashaBridge V4 · iOS EN→HI · ORT 1.27.0 · schema bb-ios/1 · source: iPhone17_2_20260813 CSV+JSON · compiled 2026-08-13</div>
+</div>
+</body></html>
