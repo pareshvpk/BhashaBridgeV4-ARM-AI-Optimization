@@ -1,0 +1,66 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Model binaries — ARCHITECTURE_RULES.md R14.5.
+# ~636 MB of ONNX graphs, SentencePiece models and vocab dictionaries. Committing these once
+# puts them in history permanently; removing them later requires rewriting every downstream clone.
+*.onnx
+# `*.onnx` alone stopped being enough once weights moved out of the graph: dedup_weights.py
+# writes the shared blob as a plain `.bin`, so a 276 MB file sat untracked and one `git add -A`
+# from history. The rule is about model bytes, not about a file extension.
+*.bin
+*.weights
+model.SRC*
+model.TGT*
+dict.*.json
+# The acoustic models are 137 MB of binaries and stay out — but their `conf/` directories do not.
+# `model.conf` is 289 bytes of decode configuration: a tuning decision, not model bytes. §3.34
+# narrowed Hindi's beam there, and under the old rule that change would have lived on one laptop —
+# invisible to review, absent from a fresh clone, and silently undone by whoever next staged the
+# models. Excluded as contents (`/**`) rather than as a directory, because git will not re-include
+# anything beneath an excluded *directory* however many `!` rules follow it.
+/app/src/main/assets/model/**
+!/app/src/main/assets/model/conf/
+!/app/src/main/assets/model/conf/**
+/app/src/main/assets/model-hi/**
+!/app/src/main/assets/model-hi/conf/
+!/app/src/main/assets/model-hi/conf/**
+
+# Python virtualenvs for the ONNX export pipeline. V3.4.1 committed one, numpy headers and all.
+/model_pipeline/**/venv/
+/model_pipeline/**/*_env/
+__pycache__/
+*.pyc
+
+# Benchmark output — raw runs are large and machine-specific. Frozen baselines are committed
+# deliberately, by path, not by accident.
+/bench/results/*/raw/
+
+# IDE session state and raw benchmark logcat dumps: local artefacts, not evidence.
+# The parsed evidence lives in model_pipeline/*.jsonl and docs/.
+/.idea/
+/model_pipeline/*.log
+
+# Prebuilt APKs � 500 MB each (bundle the models). Distribute via GitHub Releases, not git.
+/apks/
+*.apk
+
+# Tooling / build scratch
+/.kotlin/
+/.claude/
+
+# APKs ship via GitHub Releases, never in git
+/apk/
