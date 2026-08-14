@@ -140,13 +140,18 @@ The three that matter most:
 
 Captured on a Snapdragon 6 Gen 1 phone (ARMv8.2, dotprod, no i8mm/SME), offline:
 
-| Translate — live metrics | In-app stats panel | Model & device |
+| Translate — empty state | EN → HI, live metrics | HI → EN, live metrics |
 |---|---|---|
-| ![Translate](docs/images/app_translate.png) | ![Stats panel](docs/images/app_stats.png) | ![Model and device](docs/images/app_model_device.png) |
+| ![Translate](docs/images/app_translate_empty.jpg) | ![EN to HI](docs/images/app_translate_en_hi.jpg) | ![HI to EN](docs/images/app_translate_hi_en.jpg) |
 
-The **stats panel** (top-right toggle) reads the running engine: the last translation's
-`12 tokens · 335 ms · 36 tok/s`, the ORT policy in force (`arm-adaptive(threads=2)`, arena off,
-KleidiAI), and the detected CPU capabilities — so an on-screen number is the number that executed.
+| Menu / drawer | Model & device panel |
+|---|---|
+| ![Menu](docs/images/app_menu_drawer.jpg) | ![Model and device](docs/images/app_model_device_panel.jpg) |
+
+Each translation reads the running engine live: `5 tokens · 36 ms · 139 tok/s` (EN→HI), `6 tokens · 29 ms
+· 207 tok/s` (HI→EN). The **Model & device** panel (top-right toggle) shows the ORT policy in force
+(`arm-adaptive(threads=2,affinity)`, arena off, KleidiAI on) and the detected CPU capabilities — so an
+on-screen number is the number that executed.
 
 ---
 
