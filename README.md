@@ -9,7 +9,7 @@
 *No server. No network permission. No data leaving the device.*
 
 [![Download the APK](https://img.shields.io/badge/Download%20APK-v4.0-2ea44f?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/BhashaBridge-v4-arm64.apk)
-[![Watch the demo](https://img.shields.io/badge/Watch%20demo-1f2328?style=for-the-badge)](docs/media/demo.mp4)
+[![Watch the demo](https://img.shields.io/badge/Watch%20demo-1f2328?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/raw/main/docs/media/demo.mp4)
 [![Read the write-up](https://img.shields.io/badge/Arm%20Create%20write--up-0091BD?style=for-the-badge)](docs/submission/PROJECT_WRITEUP.md)
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
