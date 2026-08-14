@@ -1,0 +1,68 @@
+<resources>
+    <!-- Hindi UI. Selected with per-app locales, not a hand-tracked flag — see values/strings.xml. -->
+
+    <string name="app_tagline">ऑफ़लाइन वाक् अनुवाद</string>
+
+    <string name="lang_english">अंग्रेज़ी</string>
+    <string name="lang_hindi">हिन्दी</string>
+    <string name="label_english">अंग्रेज़ी</string>
+    <string name="label_hindi">हिन्दी</string>
+    <string name="cd_swap_languages">भाषाएँ बदलें</string>
+
+    <string name="hint_english">अंग्रेज़ी में टाइप करें या बोलें…</string>
+    <string name="hint_hindi">हिन्दी में टाइप करें या बोलें…</string>
+
+    <string name="btn_translate">अनुवाद करें</string>
+
+    <string name="output_placeholder">अनुवाद यहाँ दिखेगा…</string>
+    <string name="output_translating">अनुवाद हो रहा है…</string>
+    <string name="output_failed">अनुवाद विफल</string>
+    <string name="translation_stats">%1$d टोकन · %2$d मि.से. · %3$s टोकन/से.</string>
+    <string name="cd_stats">प्रदर्शन विवरण</string>
+    <string name="stats_title">प्रदर्शन और डिवाइस</string>
+
+    <string name="loading_initialising">मॉडल लोड हो रहे हैं…</string>
+    <string name="loading_translation_model">अनुवाद मॉडल लोड हो रहा है…</string>
+    <string name="loading_ready">तैयार!</string>
+
+    <string name="speech_mode">वाक् मोड</string>
+    <string name="cd_mic">बोलने के लिए टैप करें</string>
+    <string name="mic_tap_to_speak">बोलने के लिए माइक टैप करें</string>
+    <string name="mic_loading">वाक् मॉडल लोड हो रहा है…</string>
+    <string name="mic_listening">सुन रहे हैं…</string>
+    <string name="mic_translating">अनुवाद हो रहा है…</string>
+    <string name="mic_ready">अनुवाद तैयार</string>
+    <string name="mic_no_speech">कोई वाणी नहीं मिली</string>
+    <string name="mic_permission_required">बोलने के लिए माइक्रोफ़ोन अनुमति आवश्यक है</string>
+    <string name="mic_unavailable">वाक् मॉडल उपलब्ध नहीं</string>
+    <string name="tts_voice_missing">हिन्दी आवाज़ इंस्टॉल नहीं है — ठीक करने के लिए टैप करें</string>
+    <string name="asr_heard">सुना: %1$s</string>
+
+    <string name="cd_menu">मेनू</string>
+    <string name="menu_history">इतिहास</string>
+    <string name="menu_language">ऐप भाषा</string>
+    <string name="menu_import_audio">ऑडियो आयात करें</string>
+    <string name="menu_about">मॉडल और डिवाइस</string>
+    <string name="file_transcribing">ऑडियो लिखा जा रहा है…</string>
+
+    <string name="history_title">हाल के अनुवाद</string>
+    <string name="history_empty">अभी कोई अनुवाद नहीं</string>
+    <string name="btn_dismiss">बंद करें</string>
+
+    <string name="language_title">ऐप भाषा</string>
+    <string name="language_message">इंटरफ़ेस भाषा चुनें</string>
+
+    <string name="about_title">मॉडल और डिवाइस</string>
+    <!-- Component names (IndicTrans2, INT8, ONNX Runtime, Vosk) stay in Latin script: they are
+         identifiers the user may look up, not words. Only the surrounding prose is translated. -->
+    <string name="about_model">अनुवाद: IndicTrans2 distilled 200M, INT8, KV-cached\nEncoder + decoder_init + decoder_step, ONNX Runtime पर</string>
+    <string name="about_speech">वाक् पहचान: Vosk (अंग्रेज़ी, हिंदी), डिवाइस पर\nटेक्स्ट-टू-स्पीच: Android की सिस्टम आवाज़ें</string>
+    <string name="about_offline">सब कुछ ऑफ़लाइन चलता है। ऐप कोई नेटवर्क अनुमति नहीं माँगता।</string>
+
+    <string name="btn_emergency">🆘  आपातकालीन वाक्य</string>
+    <string name="emergency_title">🆘  आपातकालीन वाक्य</string>
+    <string name="btn_close">✕  बंद करें</string>
+    <string name="btn_speak_again">🔊  फिर से बोलें</string>
+
+    <string name="error_direction_unavailable">इस बिल्ड में हिन्दी → अंग्रेज़ी मॉडल उपलब्ध नहीं है</string>
+</resources>

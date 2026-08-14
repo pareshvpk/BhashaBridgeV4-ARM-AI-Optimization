@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  One theme, permanently dark — no values-night variant. The app's entire visual identity is the
+  dark surface plus the emerald accent; a light variant would be a second design nobody has drawn.
+  This matches v3.4.1's effective behaviour (its values-night entry overrode a base style the app
+  never used) without carrying the dead file.
+-->
+<resources>
+    <style name="Theme.BhashaBridgeV4" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Background -->
+        <item name="android:windowBackground">@color/bg_primary</item>
+        <item name="android:colorBackground">@color/bg_primary</item>
+
+        <!-- Status bar — pure black, light icons -->
+        <item name="android:statusBarColor">@color/status_bar</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Navigation bar. windowLightNavigationBar is not set: it is API 27+ against a minSdk of
+             24, and `false` — light icons on a dark bar — is the platform default on every level,
+             so the attribute only bought a NewApi error. -->
+        <item name="android:navigationBarColor">@color/bg_primary</item>
+
+        <!-- Accent / primary colours -->
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorPrimaryVariant">@color/accent_pressed</item>
+        <item name="colorOnPrimary">@color/accent_on</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorOnSecondary">@color/accent_on</item>
+        <item name="colorSurface">@color/bg_card</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:colorControlHighlight">#206EE7B7</item>
+
+        <!-- EditText cursor and handles -->
+        <item name="android:textColorHighlight">#406EE7B7</item>
+        <item name="colorControlActivated">@color/accent</item>
+
+        <!-- Ripple on dark -->
+        <item name="rippleColor">@color/accent_dim</item>
+    </style>
+
+    <!-- First-run screens: same surface, no action bar, no theme of their own to drift. -->
+    <style name="Theme.BhashaBridgeV4.Setup" parent="Theme.BhashaBridgeV4" />
+
+    <!-- Drawer rows. Declared once here rather than repeated per item, which is what v3.4.1 did:
+         each of its three rows carried the same eight attributes inline. -->
+    <style name="DrawerItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="DrawerDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:background">@color/divider_light</item>
+    </style>
+</resources>
