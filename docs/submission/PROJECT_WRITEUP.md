@@ -5,7 +5,7 @@
 |  |  |
 |----|----|
 | **Hackathon** | Arm AI Optimization Challenge — Mobile AI (Track 1: optimization output) |
-| **Platform** | Android (Arm64 / `arm64-v8a`), `minSdk 24`, `targetSdk 36`; cross-validated as an iOS port |
+| **Platform** | Android (Arm64 / `arm64-v8a`), `minSdk 24`, `targetSdk 36` |
 | **Runtime & APIs** | ONNX Runtime 1.27.0 (CPU EP / MLAS) · Arm KleidiAI micro-kernels · XNNPACK (probed) · Vosk 0.3.47 |
 | **Model** | IndicTrans2 distilled 200M, re-exported with KV-cache and quantized to INT8 |
 | **Repository** | Public, open-source — **MIT License** (© 2026 V Paresh Kumar) |
@@ -19,7 +19,7 @@
 
 **Why it exists.** The situations where a translator matters most — a clinic counter, a roadside emergency, a border crossing, a low-cost phone on a weak network — are exactly the ones where round-tripping to a cloud service fails: latency, cost, dead zones, and the privacy cost of sending someone’s medical or legal words to a third party. So the design brief was uncompromising: the model must fit and run on an ordinary phone’s CPU, answer fast enough to feel conversational, survive offline, and never make a request it doesn’t have to.
 
-**What makes it interesting, and why it should win.** The story is not “we built a translation app” — it is *how a model that could not run well on-device was made to.* The IndicTrans2 decoder, as originally exported, shipped **with no key/value cache**: every generated token re-attended the entire growing prefix, making decoding **O(n²)** in sentence length — the worst possible shape for the long sentences that matter. BhashaBridge re-exports the model as a **three-graph, KV-cached pipeline** (O(n)), quantizes it to INT8 with a **verified numeric parity gate**, and makes the runtime **Arm-capability-aware** — reading the CPU’s features at launch and dispatching the right integer kernel, deriving its thread count from the core topology, and toggling Arm’s KleidiAI/SME kernel by *measurement*. Every one of those decisions is backed by on-device numbers across **twelve devices spanning Armv8.0 to ARMv9**, published as raw data with a strict provenance rule. It is a complete, runnable app whose real deliverable is an **optimization method that transfers** — the exact spirit of an *optimization* challenge.
+**What makes it interesting, and why it should win.** The story is not “we built a translation app” — it is *how a model that could not run well on-device was made to.* The IndicTrans2 decoder, as originally exported, shipped **with no key/value cache**: every generated token re-attended the entire growing prefix, making decoding **O(n²)** in sentence length — the worst possible shape for the long sentences that matter. BhashaBridge re-exports the model as a **three-graph, KV-cached pipeline** (O(n)), quantizes it to INT8 with a **verified numeric parity gate**, and makes the runtime **Arm-capability-aware** — reading the CPU’s features at launch and dispatching the right integer kernel, deriving its thread count from the core topology, and toggling Arm’s KleidiAI/SME kernel by *measurement*. Every one of those decisions is backed by on-device numbers across **nine devices, four silicon vendors, spanning Armv8.0 to ARMv9**, published as raw data with a strict provenance rule. It is a complete, runnable app whose real deliverable is an **optimization method that transfers** — the exact spirit of an *optimization* challenge.
 
 ------------------------------------------------------------------------
 
@@ -37,7 +37,7 @@
 
 1.  **An optimized, on-device model** — IndicTrans2 200M re-exported as `encoder` / `decoder_init` / `decoder_step` INT8 graphs with a shared de-duplicated weight blob per direction (**1869 MB fp32 → 472 MB INT8**, 3.96×; artifact footprint cut a further 31% by weight de-duplication).
 2.  **A reproducible optimization + validation method** — a scripted export→quantize→verify pipeline with a two-mode numeric gate, and a benchmark that ships inside the app and emits a machine-readable record per run.
-3.  **A twelve-device measurement campaign** — raw JSON/CSV per device plus written reports, showing the *same APK* scale from **50.3 → 412.8 tokens/sec** across Armv8.0 → ARMv9 with **no recompile**.
+3.  **A nine-device measurement campaign** — raw JSON/CSV per device plus written reports, showing the *same APK* scale from **50.3 → 412.8 tokens/sec** across Armv8.0 → ARMv9 with **no recompile**.
 
 ------------------------------------------------------------------------
 
@@ -76,9 +76,7 @@ Every optimization was measured on a benchmark that ships in the app; the earlie
 | Latency stability (stdev, 12 tok) | 93 ms | **18–23 ms** | ~−80% jitter |
 | Process memory | ~983 MB (arena on + a per-rotation native leak) | **~605–670 MB** (arena off, leak fixed) | lower, and the leaked native heap now returns 557.8→13.2 MB on release |
 | Long-input correctness | 5/16 sentences truncated (31%) | **0/16** | fixed a hard 18-step cap |
-| Portability | 1 device, ORT 1.17.1, 2 tests | **12 devices, ORT 1.27.0, 94 tests** | same APK: **50.3 → 412.8 tok/s**, Armv8.0 → ARMv9, no recompile |
-
-**A cross-platform finding worth highlighting:** the *same* KleidiAI SME kernel measured a net **loss (−8.9%)** on the Android flagship but a net **win (+3–9%)** on iOS — so the engine ships **opposite kernel policies per build, each chosen by measurement.** That result only falls out of measuring on real hardware.
+| Portability | 1 device, ORT 1.17.1, 2 tests | **9 devices, four vendors, ORT 1.27.0, 94 tests** | same APK: **50.3 → 412.8 tok/s**, Armv8.0 → ARMv9, no recompile |
 
 ------------------------------------------------------------------------
 
@@ -89,8 +87,7 @@ The project began the period as a v3.4.1 prototype whose translation engine did 
 - **Re-architected the model export** from a cache-less O(n²) decoder to a three-graph KV-cached O(n) pipeline, with a flattened attention cache as named ONNX I/O.
 - **Built the export→quantize→verify pipeline** (`model_pipeline/`), including the two-mode numeric parity gate and shared-weight de-duplication.
 - **Made the runtime Arm-capability-aware** — CPU feature detection, topology-derived thread policy, and a measured KleidiAI/SME toggle.
-- **Ran a twelve-device measurement campaign** with a shipped benchmark, a strict provenance rule, and a published negative-results ledger.
-- **Ported and validated the engine on iOS**, producing the cross-platform SME finding.
+- **Ran a nine-device measurement campaign** with a shipped benchmark, a strict provenance rule, and a published negative-results ledger.
 - **Fixed a class of correctness/lifecycle defects** carried from v3.4.1 (silent truncation, a native use-after-free, a per-rotation memory leak) and added a 94-method test suite.
 
 ------------------------------------------------------------------------

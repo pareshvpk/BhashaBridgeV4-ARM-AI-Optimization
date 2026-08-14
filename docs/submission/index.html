@@ -55,31 +55,31 @@ a.card:hover{border-color:var(--series-1);transform:translateY(-2px)}
    <span class="pill">KleidiAI SME</span>
    <span class="pill">XNNPACK probed</span>
    <span class="pill">INT8 · KV-cache</span>
-   <span class="pill">Android + iOS on Arm</span>
+   <span class="pill">Android arm64</span>
    <span class="pill">Offline (no INTERNET permission)</span>
   </div>
   <div class="tiles">
    <div class="tile"><div class="v">O(n²)→O(n)</div><div class="k">Decode complexity rewrite</div></div>
    <div class="tile"><div class="v">77–86 <small>ms</small></div><div class="k">Full-sentence translate (flagship)</div></div>
    <div class="tile"><div class="v">−38% <small>mem</small></div><div class="k">Process memory, no latency cost</div></div>
-   <div class="tile"><div class="v">12</div><div class="k">Devices validated · Armv8.0→ARMv9</div></div>
+   <div class="tile"><div class="v">9</div><div class="k">Devices validated · Armv8.0→ARMv9</div></div>
   </div>
  </div>
 
  <h2>Start here</h2>
  <div class="cards grid2">
-  <a class="card lead" href="BhashaBridge V4 - Project Write-Up.docx">
-   <div class="kind">Submission write-up · Word document</div>
+  <a class="card lead" href="PROJECT_WRITEUP.md">
+   <div class="kind">Submission write-up</div>
    <h3>The full submission</h3>
    <p>What it is, why it exists, how the engine works, how it leverages Arm silicon, the measured
-    optimization story, cross-platform findings, validation, and reusable takeaways.</p>
+    optimization story, validation, and reusable takeaways.</p>
    <div class="metric">Read this first →</div>
   </a>
-  <a class="card lead" href="version_comparison_v3.4_v4_ios.html">
-   <div class="kind">Result · interactive charts</div>
-   <h3>v3.4.1 → V4 → V4 (iOS)</h3>
+  <a class="card lead" href="BENCHMARK_COMPARISON.md">
+   <div class="kind">Result · measured tables</div>
+   <h3>v3.4.1 → V4</h3>
    <p>The before/after that proves the optimization: latency, decode complexity, stability, startup,
-    memory, artifact size, correctness — with charts.</p>
+    memory, artifact size, correctness.</p>
    <div class="metric"><b>17.6×</b> long-sentence · <b>−80%</b> jitter · <b>31%→0%</b> truncation</div>
   </a>
  </div>
@@ -91,24 +91,6 @@ a.card:hover{border-color:var(--series-1);transform:translateY(-2px)}
    <h3>Galaxy S26 Ultra</h3>
    <p>Best-performing target · 8 uniform cores · SME present.</p>
    <div class="metric"><b>86 ms</b> long · <b>535</b> tok/s</div>
-  </a>
-  <a class="card" href="iPhone_16_benchmark.html">
-   <div class="kind">iOS · fastest iPhone</div>
-   <h3>iPhone 16</h3>
-   <p>Leads the iOS set on latency and throughput.</p>
-   <div class="metric"><b>159 ms</b> long · <b>288</b> tok/s</div>
-  </a>
-  <a class="card" href="iPhone_17_benchmark.html">
-   <div class="kind">iOS · most stable</div>
-   <h3>iPhone 17</h3>
-   <p>Flattest sustained-load profile of all four.</p>
-   <div class="metric"><b>168 ms</b> long · <b>+0.2%</b> drift</div>
-  </a>
-  <a class="card" href="iPhone_16_Pro_Max_benchmark.html">
-   <div class="kind">iOS</div>
-   <h3>iPhone 16 Pro Max</h3>
-   <p>Older-OS run; trails on a thermal/OS effect, not hardware.</p>
-   <div class="metric"><b>213 ms</b> long · <b>222</b> tok/s</div>
   </a>
  </div>
 
@@ -123,23 +105,9 @@ a.card:hover{border-color:var(--series-1);transform:translateY(-2px)}
   </a>
  </div>
 
- <h2>Submission documents (Word)</h2>
- <div class="cards grid2">
-  <a class="card doc" href="BhashaBridge V4 - Project Write-Up.docx">
-   <div class="kind">Word document</div>
-   <h3>Project Write-Up</h3>
-   <p>The complete submission: overview, functionality, technical implementation, setup/build/run/validate, licensing, and limitations.</p>
-  </a>
-  <a class="card doc" href="BhashaBridge V4 - Benchmark Comparison.docx">
-   <div class="kind">Word document</div>
-   <h3>Benchmark Comparison</h3>
-   <p>v3.4.1 → V4 → V4 (iOS), technical benchmarks only — hardware-agnostic, numbers and tables.</p>
-  </a>
- </div>
-
  <div class="foot">
   BhashaBridge V4 · EN⇄HI · fully offline on-device translation + speech · ONNX Runtime 1.27.0 ·
-  KleidiAI SME · Android &amp; iOS on Arm<br>
+  KleidiAI SME · Android on Arm<br>
   Every figure measured on-device by the shipped benchmark · compiled 2026-08-14
  </div>
 

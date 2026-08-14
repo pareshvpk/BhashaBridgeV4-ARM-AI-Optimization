@@ -87,19 +87,19 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
  </section>
  <section>
   <h2><span class="num">§3</span>Translation latency by sentence</h2>
-  <p class="note">Median translate time, n=30. Directly comparable to the iPhone pages (same sentence, same INT8 model).</p>
+  <p class="note">Median translate time, n=30.</p>
   <div class="chartwrap"><svg viewBox="0 0 680 84" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">“Water.” (2 tok)</text><rect x="176" y="14" width="104.4" height="18" rx="4" style="fill:var(--series-1)"/><text x="288.37209302325584" y="29.0" class="vlab">22.0 ms  ±0.80</text><text x="164" y="63.0" text-anchor="end" class="ylab">“The weather…” (12 tok)</text><rect x="176" y="48" width="408.0" height="18" rx="4" style="fill:var(--series-1)"/><text x="592.0" y="63.0" class="vlab">86.0 ms  ±3.3</text></svg></div>
  </section>
  <section>
   <h2><span class="num">§4</span>Thread sweep — intra-op ladder</h2>
   <p class="note">8 uniform cores, so the policy derives and ships <b>2 threads</b> (the minimum here).
-   Degradation is monotonic above 2 — unlike the 2-perf-core iPhones, where 1 thread wins.</p>
+   Degradation is monotonic above 2.</p>
   <div class="chartwrap"><svg viewBox="0 0 680 220" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">intra 1</text><rect x="176" y="14" width="253.3" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="437.33333333333337" y="29.0" class="vlab">95 ms</text><text x="164" y="63.0" text-anchor="end" class="ylab">intra 2 (ships)</text><rect x="176" y="48" width="242.7" height="18" rx="4" style="fill:var(--series-1)"/><text x="426.66666666666663" y="63.0" class="vlab">91 ms</text><text x="164" y="97.0" text-anchor="end" class="ylab">intra 3</text><rect x="176" y="82" width="266.7" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="450.6666666666667" y="97.0" class="vlab">100 ms</text><text x="164" y="131.0" text-anchor="end" class="ylab">intra 4</text><rect x="176" y="116" width="277.3" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="461.33333333333337" y="131.0" class="vlab">104 ms</text><text x="164" y="165.0" text-anchor="end" class="ylab">intra 6</text><rect x="176" y="150" width="304.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="488.0" y="165.0" class="vlab">114 ms</text><text x="164" y="199.0" text-anchor="end" class="ylab">intra 8</text><rect x="176" y="184" width="408.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="592.0" y="199.0" class="vlab">153 ms</text></svg></div>
  </section>
  <section>
   <h2><span class="num">§5</span>KleidiAI / SME kernel A/B</h2>
   <p class="note"><b class="good">SME OFF wins −8.9%</b> on this SME part — so the shipping policy sets
-   <code>disableKleidiAi = caps.sme</code>. This is the <b>opposite</b> of the iPhones, where SME ON helps.</p>
+   <code>disableKleidiAi = caps.sme</code>.</p>
   <div class="chartwrap"><svg viewBox="0 0 680 84" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">KleidiAI / SME OFF (ships)</text><rect x="176" y="14" width="365.5" height="18" rx="4" style="fill:var(--series-1)"/><text x="549.5" y="29.0" class="vlab">86 ms</text><text x="164" y="63.0" text-anchor="end" class="ylab">KleidiAI / SME ON</text><rect x="176" y="48" width="408.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="592.0" y="63.0" class="vlab">96 ms</text></svg></div>
  </section>
  <section>
@@ -117,17 +117,6 @@ td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
    <tr><td>Peak PSS under 100 direction switches</td><td class="n">529.4 MB</td></tr>
    <tr><td>Model cache on disk</td><td class="n">279.8 MB</td></tr>
   </table>
- </section>
- <section>
-  <h2><span class="num">§8</span>Cross-device comparison</h2>
-  <p class="note">The Android flagship (highlighted) against the three iPhones. Same sentence, same INT8 model.</p>
-  <div style="font-size:13px;color:var(--muted);margin:8px 0 4px">Long-sentence median latency — ms (lower better)</div>
-  <div class="chartwrap"><svg viewBox="0 0 680 152" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">Galaxy S26 Ultra · Android</text><rect x="176" y="14" width="165.0" height="18" rx="4" style="fill:var(--series-1)"/><text x="348.95388173792037" y="29.0" class="vlab">86 ms</text><text x="164" y="63.0" text-anchor="end" class="ylab">iPhone 16</text><rect x="176" y="48" width="305.9" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="489.8686123151274" y="63.0" class="vlab">159 ms</text><text x="164" y="97.0" text-anchor="end" class="ylab">iPhone 17</text><rect x="176" y="82" width="322.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="505.99573135759755" y="97.0" class="vlab">168 ms</text><text x="164" y="131.0" text-anchor="end" class="ylab">iPhone 16 Pro Max</text><rect x="176" y="116" width="408.0" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="592.0" y="131.0" class="vlab">213 ms</text></svg></div>
-  <div style="font-size:13px;color:var(--muted);margin:18px 0 4px">Throughput — Android-suite-compatible tok/s (higher better)</div>
-  <div class="chartwrap"><svg viewBox="0 0 680 152" role="img" class="chart" preserveAspectRatio="xMidYMid meet"><text x="164" y="29.0" text-anchor="end" class="ylab">Galaxy S26 Ultra · Android</text><rect x="176" y="14" width="408.0" height="18" rx="4" style="fill:var(--series-2)"/><text x="592.0" y="29.0" class="vlab">535.1</text><text x="164" y="63.0" text-anchor="end" class="ylab">iPhone 16</text><rect x="176" y="48" width="219.5" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="403.50643991777235" y="63.0" class="vlab">287.887</text><text x="164" y="97.0" text-anchor="end" class="ylab">iPhone 17</text><rect x="176" y="82" width="211.8" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="395.76046346477295" y="97.0" class="vlab">277.728</text><text x="164" y="131.0" text-anchor="end" class="ylab">iPhone 16 Pro Max</text><rect x="176" y="116" width="169.3" height="18" rx="4" style="fill:var(--muted-bar)"/><text x="353.3074191739862" y="131.0" class="vlab">222.05</text></svg></div>
-  <div class="callout">The S26 Ultra leads every iPhone by ~2–2.5× on the same workload — it runs
-   2 intra-op threads across 8 uniform Oryon cores, where each iPhone is single-threaded on 2 performance cores.
-   The two platforms also disagree on SME: it helps on Apple, and is disabled by policy on this Android part.</div>
  </section>
  <div class="foot">BhashaBridge V4 · Android EN→HI · ORT 1.27.0 · schema bb-bench/1 · source: s26ultra_revalidation_2026-08-13 · compiled 2026-08-13</div>
 </div>
