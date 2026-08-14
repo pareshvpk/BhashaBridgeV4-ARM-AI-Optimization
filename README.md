@@ -32,7 +32,7 @@
 **Jump to:** [What it is](#what-bhashabridge-is) · [What makes it different](#what-makes-it-different) ·
 [Evidence](#evidence-at-a-glance) · [Features](#features) · [Screenshots](#screenshots) ·
 [Benchmarks](#where-the-speed-up-comes-from) · [v3.4.1 vs V4](#v341-vs-v4-the-measured-delta) ·
-[KleidiAI & EPs](#kleidiai--the-execution-providers) · [Get started](#get-started) ·
+[iOS](#the-same-model-on-ios) · [KleidiAI & EPs](#kleidiai--the-execution-providers) · [Get started](#get-started) ·
 [Repo guide](#repository-guide) · [Docs](#documentation) · [Limitations](#known-limitations) ·
 [Why trust it](#why-trust-any-of-this) · [License](#license)
 
@@ -80,12 +80,14 @@ its earlier claims, that is recorded here rather than buried (see [Why trust any
 
 ### One APK, the whole Arm ISA range — 8.2× from oldest to newest
 
-<p align="center"><img src="docs/images/charts/devices_throughput.svg" alt="Bar chart of sustained throughput across nine Android devices, from 50.3 tok/s on Armv8.0 to 412.8 tok/s on ARMv9" width="820"></p>
+<p align="center"><img src="docs/images/charts/devices_throughput.svg" alt="Bar chart of sustained throughput: nine Android devices in purple, from 50.3 tok/s on Armv8.0 to 412.8 tok/s on ARMv9, plus the iPhone 16 (iOS) in green at 288 tok/s for cross-platform reference" width="880"></p>
 
 Nine Android devices, four silicon vendors, **one binary**: MLAS feature-dispatches the INT8 kernel at
 runtime, so the Armv8.0 part (plain NEON) and the ARMv9 part (SVE2/SME) run the same file. The two throttled
 runs (CPH2603, S22U) are lower bounds, and the S22U additionally ran single-threaded — see the caveats in
-[the cross-device report](bench/results/cross-device/CROSS_DEVICE_REPORT.md).
+[the cross-device report](bench/results/cross-device/CROSS_DEVICE_REPORT.md). The green bar is the **same INT8
+model on iOS** (iPhone 16, a separate build) — a cross-platform reference, detailed in
+[The same model on iOS](#the-same-model-on-ios).
 
 The three that matter most:
 
@@ -213,6 +215,45 @@ parser and ~46% was ONNX Runtime building sessions. Unpacking 472 MB of assets c
 earlier versions shipped a fixed `maxSteps=18` cap that **silently cut 5 of 16 long inputs** — no error, just
 a sentence that stopped early; V4 derives the cap from source length and truncates **none**. That last one
 matters most to a user and least to a benchmark.
+
+---
+
+## The same model on iOS
+
+The optimization work — the KV-cache rewrite, the INT8 quantization, the Arm-capability dispatch — targets
+**Android on the Galaxy S26 Ultra**; that is where the engineering story lives. The *same* INT8 model was then
+built for iOS and measured on-device by the shipping harness (schema `bb-ios/1`, EN→HI, 30 iterations, 5
+warm-ups) across three iPhones. The best of them is the **iPhone 16 (A18, iOS 27)** — it leads every iPhone
+tested on both latency and throughput.
+
+| Metric — iPhone 16, best iOS device | Value | Note |
+|---|---|---|
+| "Water." (2 tok) | **39.6 ms** | median, n=30 |
+| "The weather is very nice today…" (12 tok) | **163.9 ms** | median, n=30 |
+| Throughput | **288 tok/s** | Android-suite-compatible basis |
+| Cold engine init | 1018 ms | tokenizer + model load |
+| Peak memory | 993 MB | 272 MB model staged |
+| KleidiAI / SME kernel | **on wins, +8.9%** | 173.2 ms on vs 188.6 ms off |
+
+**The SME result inverts on Apple silicon.** On the Android S26 Ultra the app *disables* KleidiAI's SME kernel
+because forcing it on costs **−8.9%**; on the iPhone 16 the same kernel forced **on** is **8.9% faster**. Same
+code, opposite policy — decided by measurement on each platform, never assumed. The Android flagship still
+leads outright: the S26 Ultra runs 2 threads across 8 uniform cores and lands the 12-token sentence in ~86 ms
+(535 tok/s), ~1.9× the best iPhone, which is single-threaded on its 2 performance cores. That iOS bar is the
+green one on the [throughput chart above](#one-apk-the-whole-arm-isa-range--82-from-oldest-to-newest).
+
+### Three on-device benchmark pages, side by side
+
+v3.4.1 (the before) · V4 on Android (the target) · V4 on iOS (best device). Each is a self-contained,
+interactive page — every number read off the device by the shipped harness.
+
+<table>
+<tr>
+<td width="33%" valign="top"><b>v3.4.1 — baseline</b><br><sub>Before: no KV cache, O(n²) decode</sub><br><br>867 ms long · 22.8 tok/s<br>840 MB · 8.8 s cold<br><br><a href="docs/submission/V2338_V3.4_benchmark.html">Open v3.4.1 page →</a></td>
+<td width="33%" valign="top"><b>V4 — Android · S26 Ultra</b><br><sub>The optimization target</sub><br><br><b>86 ms</b> long · <b>535</b> tok/s<br>SME present, disabled by policy<br><br><a href="docs/submission/S26_Ultra_benchmark.html">Open V4 Android page →</a></td>
+<td width="33%" valign="top"><b>V4 — iOS · iPhone 16</b><br><sub>Best iOS device, same INT8 model</sub><br><br>164 ms long · 288 tok/s<br>SME on wins (+8.9%)<br><br><a href="docs/submission/iPhone_16_benchmark.html">Open V4 iOS page →</a></td>
+</tr>
+</table>
 
 ---
 

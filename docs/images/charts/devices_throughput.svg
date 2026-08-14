@@ -1,53 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 420" width="820" height="420" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
-<text x="62" y="30" fill="#7d8590" font-size="16" font-weight="700">One APK across the Arm ISA range — 8.2x from oldest to newest</text>
-<text x="62" y="50" fill="#7d8590" font-size="12" opacity="0.85">Sustained throughput, tokens/sec. Higher is better. Source: bench/results/cross-device</text>
-<line x1="62" y1="324.0" x2="796" y2="324.0" stroke="#8b949e" stroke-opacity="0.3"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 420" width="880" height="420" font-family="-apple-system,Segoe UI,Helvetica,Arial,sans-serif">
+<text x="62" y="30" fill="#7d8590" font-size="16" font-weight="700">Sustained throughput across devices — one Android APK, plus the same model on iOS</text>
+<text x="62" y="50" fill="#7d8590" font-size="12" opacity="0.85">Tokens/sec, higher is better. Purple = one Android APK, feature-dispatched Armv8.0→ARMv9 (8.2x). Green = iPhone 16 (iOS), a separate build, for reference.</text>
+<line x1="62" y1="324.0" x2="866" y2="324.0" stroke="#8b949e" stroke-opacity="0.3"/>
 <text x="54" y="328.0" fill="#7d8590" font-size="11" text-anchor="end" opacity="0.9">0</text>
-<line x1="62" y1="261.5" x2="796" y2="261.5" stroke="#8b949e" stroke-opacity="0.3"/>
+<line x1="62" y1="261.5" x2="866" y2="261.5" stroke="#8b949e" stroke-opacity="0.3"/>
 <text x="54" y="265.5" fill="#7d8590" font-size="11" text-anchor="end" opacity="0.9">125</text>
-<line x1="62" y1="199.0" x2="796" y2="199.0" stroke="#8b949e" stroke-opacity="0.3"/>
+<line x1="62" y1="199.0" x2="866" y2="199.0" stroke="#8b949e" stroke-opacity="0.3"/>
 <text x="54" y="203.0" fill="#7d8590" font-size="11" text-anchor="end" opacity="0.9">250</text>
-<line x1="62" y1="136.5" x2="796" y2="136.5" stroke="#8b949e" stroke-opacity="0.3"/>
+<line x1="62" y1="136.5" x2="866" y2="136.5" stroke="#8b949e" stroke-opacity="0.3"/>
 <text x="54" y="140.5" fill="#7d8590" font-size="11" text-anchor="end" opacity="0.9">375</text>
-<line x1="62" y1="74.0" x2="796" y2="74.0" stroke="#8b949e" stroke-opacity="0.3"/>
+<line x1="62" y1="74.0" x2="866" y2="74.0" stroke="#8b949e" stroke-opacity="0.3"/>
 <text x="54" y="78.0" fill="#7d8590" font-size="11" text-anchor="end" opacity="0.9">500</text>
 <text x="16" y="199.0" fill="#7d8590" font-size="11" opacity="0.9" text-anchor="middle" transform="rotate(-90 16 199.0)">tokens / second</text>
 <rect x="73.4" y="298.9" width="55.7" height="25.1" rx="3" fill="#8957e5" fill-opacity="0.92"/>
-<text x="101.3" y="292.9" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">50.3</text>
+<text x="101.2" y="292.9" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">50.3</text>
 <text x="102.8" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">M31</text>
 <text x="102.8" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.0</text>
-<rect x="155.0" y="247.8" width="55.7" height="76.2" rx="3" fill="#8957e5" fill-opacity="0.92"/>
-<text x="182.8" y="241.8" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">152</text>
+<rect x="155.0" y="248.0" width="55.7" height="76.0" rx="3" fill="#8957e5" fill-opacity="0.92"/>
+<text x="182.8" y="242.0" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">152</text>
 <text x="184.3" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">M14</text>
 <text x="184.3" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.2</text>
-<rect x="236.5" y="248.1" width="55.7" height="76.0" rx="3" fill="#8957e5" fill-opacity="0.92"/>
-<text x="264.4" y="242.1" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">152</text>
+<rect x="236.6" y="248.0" width="55.7" height="76.0" rx="3" fill="#8957e5" fill-opacity="0.92"/>
+<text x="264.4" y="242.0" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">152</text>
 <text x="265.9" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">CPH2603</text>
 <text x="265.9" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.2</text>
-<rect x="318.1" y="235.2" width="55.7" height="88.8" rx="3" fill="#8957e5" fill-opacity="0.92"/>
-<text x="345.9" y="229.2" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">178</text>
-<text x="347.4" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">moto g73</text>
-<text x="347.4" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.2</text>
-<rect x="399.6" y="230.6" width="55.7" height="93.4" rx="3" fill="#8957e5" fill-opacity="0.92"/>
-<text x="427.5" y="224.6" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">187</text>
-<text x="429.0" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">V2338</text>
-<text x="429.0" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.2</text>
-<rect x="481.2" y="223.8" width="55.7" height="100.2" rx="3" fill="#8957e5" fill-opacity="0.92"/>
-<text x="509.1" y="217.8" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">200</text>
-<text x="510.6" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">A015</text>
-<text x="510.6" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.2</text>
-<rect x="562.8" y="220.2" width="55.7" height="103.8" rx="3" fill="#8957e5" fill-opacity="0.92"/>
-<text x="590.6" y="214.2" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">208</text>
-<text x="592.1" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">LXX518</text>
-<text x="592.1" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.2</text>
-<rect x="644.3" y="218.1" width="55.7" height="105.9" rx="3" fill="#8957e5" fill-opacity="0.92"/>
-<text x="672.2" y="212.1" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">212</text>
-<text x="673.7" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">S22 Ultra</text>
-<text x="673.7" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.6</text>
-<rect x="725.9" y="117.6" width="55.7" height="206.4" rx="3" fill="#8957e5" fill-opacity="0.92"/>
-<text x="753.7" y="111.6" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">413</text>
-<text x="755.2" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">S26 Ultra</text>
-<text x="755.2" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">ARMv9</text>
+<rect x="318.2" y="235.0" width="55.7" height="89.0" rx="3" fill="#8957e5" fill-opacity="0.92"/>
+<text x="346.1" y="229.0" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">178</text>
+<text x="347.6" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">moto g73</text>
+<text x="347.6" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.2</text>
+<rect x="399.8" y="230.5" width="55.7" height="93.5" rx="3" fill="#8957e5" fill-opacity="0.92"/>
+<text x="427.6" y="224.5" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">187</text>
+<text x="429.1" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">V2338</text>
+<text x="429.1" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.2</text>
+<rect x="481.4" y="224.0" width="55.7" height="100.0" rx="3" fill="#8957e5" fill-opacity="0.92"/>
+<text x="509.2" y="218.0" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">200</text>
+<text x="510.8" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">A015</text>
+<text x="510.8" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.2</text>
+<rect x="563.0" y="220.0" width="55.7" height="104.0" rx="3" fill="#8957e5" fill-opacity="0.92"/>
+<text x="590.9" y="214.0" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">208</text>
+<text x="592.4" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">LXX518</text>
+<text x="592.4" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.2</text>
+<rect x="644.6" y="218.0" width="55.7" height="106.0" rx="3" fill="#8957e5" fill-opacity="0.92"/>
+<text x="672.4" y="212.0" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">212</text>
+<text x="673.9" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">S22 Ultra</text>
+<text x="673.9" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">Armv8.6</text>
+<rect x="726.2" y="117.5" width="55.7" height="206.5" rx="3" fill="#8957e5" fill-opacity="0.92"/>
+<text x="754.0" y="111.5" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">413</text>
+<text x="755.5" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">S26 Ultra</text>
+<text x="755.5" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">ARMv9</text>
+<rect x="807.8" y="180.0" width="55.7" height="144.0" rx="3" fill="#1baf7a" fill-opacity="0.92"/>
+<text x="835.6" y="174.0" fill="#7d8590" font-size="11" font-weight="600" text-anchor="middle">288</text>
+<text x="837.1" y="344.0" fill="#7d8590" font-size="11" text-anchor="middle">iPhone 16</text>
+<text x="837.1" y="358.0" fill="#7d8590" font-size="11" text-anchor="middle">iOS · A18</text>
 <rect x="62" y="386" width="12" height="12" rx="3" fill="#8957e5"/>
-<text x="80" y="396" fill="#7d8590" font-size="12">tokens / second</text>
+<text x="80" y="396" fill="#7d8590" font-size="12">Android — one APK, feature-dispatched across the Arm ISA range</text>
+<rect x="470" y="386" width="12" height="12" rx="3" fill="#1baf7a"/>
+<text x="488" y="396" fill="#7d8590" font-size="12">iOS — iPhone 16 (separate build, cross-platform reference)</text>
 </svg>
