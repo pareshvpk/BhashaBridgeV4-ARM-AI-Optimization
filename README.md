@@ -8,7 +8,7 @@
 
 *No server. No network permission. No data leaving the device.*
 
-[![Download the APK](https://img.shields.io/badge/⬇%20Download%20APK-v4.0-2ea44f?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridge---ARM-AI-Optimization/releases/download/v4.0/BhashaBridge-v4-arm64.apk)
+[![Download the APK](https://img.shields.io/badge/⬇%20Download%20APK-v4.0-2ea44f?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/BhashaBridge-v4-arm64.apk)
 [![Watch the demo](https://img.shields.io/badge/▶%20Watch%20demo-1f2328?style=for-the-badge)](docs/media/demo.mp4)
 [![Read the write-up](https://img.shields.io/badge/📄%20Arm%20Create%20write--up-0091BD?style=for-the-badge)](docs/submission/PROJECT_WRITEUP.md)
 
@@ -325,8 +325,8 @@ and the full write-up in **[PROJECT_WRITEUP.md](docs/submission/PROJECT_WRITEUP.
 
 ### 📲 Install the prebuilt app — models bundled, no build, offline from the first launch
 
-[![Download the APK](https://img.shields.io/badge/⬇%20BhashaBridge--v4--arm64.apk-2ea44f?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridge---ARM-AI-Optimization/releases/download/v4.0/BhashaBridge-v4-arm64.apk)
-[![Download the benchmark](https://img.shields.io/badge/🧪%20ArmSmokeTest%20benchmark-0091BD?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridge---ARM-AI-Optimization/releases/download/v4.0/ArmSmokeTest-benchapp-arm64.apk)
+[![Download the APK](https://img.shields.io/badge/⬇%20BhashaBridge--v4--arm64.apk-2ea44f?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/BhashaBridge-v4-arm64.apk)
+[![Download the benchmark](https://img.shields.io/badge/🧪%20ArmSmokeTest%20benchmark-0091BD?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/ArmSmokeTest-benchapp-arm64.apk)
 
 </div>
 
@@ -347,8 +347,8 @@ for the instant, model-free path.
 <br>
 
 ```bash
-git clone https://github.com/pareshvpk/BhashaBridge---ARM-AI-Optimization.git
-cd BhashaBridge---ARM-AI-Optimization
+git clone https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization.git
+cd BhashaBridgeV4-ARM-AI-Optimization
 ./gradlew installDebug
 ```
 
@@ -423,6 +423,6 @@ and the **IndicTrans2** model from AI4Bharat — each keeps its own license; see
 <div align="center">
 <br>
 
-**Built for the Arm Create submission** · [📄 Write-up](docs/submission/PROJECT_WRITEUP.md) · [📊 Benchmarks](docs/Benchmarks.md) · [⬇ Download](https://github.com/pareshvpk/BhashaBridge---ARM-AI-Optimization/releases/download/v4.0/BhashaBridge-v4-arm64.apk)
+**Built for the Arm Create submission** · [📄 Write-up](docs/submission/PROJECT_WRITEUP.md) · [📊 Benchmarks](docs/Benchmarks.md) · [⬇ Download](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/BhashaBridge-v4-arm64.apk)
 
 </div>
