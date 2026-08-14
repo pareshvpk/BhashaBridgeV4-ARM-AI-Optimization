@@ -268,7 +268,6 @@ Ordered by how much they matter.
    explicit thread sweep on a second topology (§9 Q2b).
 7. **Portrait only.** A landscape layout was found unusable during validation and the orientation is
    now locked rather than left broken. A responsive layout is the real fix.
-8. **No demo video.**
 
 ---
 
