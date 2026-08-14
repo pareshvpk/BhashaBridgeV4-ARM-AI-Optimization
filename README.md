@@ -8,9 +8,9 @@
 
 *No server. No network permission. No data leaving the device.*
 
-[![Download the APK](https://img.shields.io/badge/⬇%20Download%20APK-v4.0-2ea44f?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/BhashaBridge-v4-arm64.apk)
-[![Watch the demo](https://img.shields.io/badge/▶%20Watch%20demo-1f2328?style=for-the-badge)](docs/media/demo.mp4)
-[![Read the write-up](https://img.shields.io/badge/📄%20Arm%20Create%20write--up-0091BD?style=for-the-badge)](docs/submission/PROJECT_WRITEUP.md)
+[![Download the APK](https://img.shields.io/badge/Download%20APK-v4.0-2ea44f?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/BhashaBridge-v4-arm64.apk)
+[![Watch the demo](https://img.shields.io/badge/Watch%20demo-1f2328?style=for-the-badge)](docs/media/demo.mp4)
+[![Read the write-up](https://img.shields.io/badge/Arm%20Create%20write--up-0091BD?style=for-the-badge)](docs/submission/PROJECT_WRITEUP.md)
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Platform](https://img.shields.io/badge/platform-Android%20arm64-brightgreen)
@@ -20,26 +20,26 @@
 
 <table>
 <tr>
-<td align="center" width="150"><h2>⚡ 412.8</h2><b>tok/s peak</b><br><sub>Snapdragon 8 Elite Gen 5</sub></td>
-<td align="center" width="150"><h2>🚀 2.12×</h2><b>faster decode</b><br><sub>vs. the un-cached lineage</sub></td>
-<td align="center" width="150"><h2>🗜️ 3.96×</h2><b>smaller weights</b><br><sub>1869 → 472 MB, INT8</sub></td>
-<td align="center" width="150"><h2>📵 0</h2><b>network permissions</b><br><sub>enforced by the manifest</sub></td>
+<td align="center" width="150"><h2>412.8</h2><b>tok/s peak</b><br><sub>Snapdragon 8 Elite Gen 5</sub></td>
+<td align="center" width="150"><h2>2.12×</h2><b>faster decode</b><br><sub>vs. the un-cached lineage</sub></td>
+<td align="center" width="150"><h2>3.96×</h2><b>smaller weights</b><br><sub>1869 → 472 MB, INT8</sub></td>
+<td align="center" width="150"><h2>0</h2><b>network permissions</b><br><sub>enforced by the manifest</sub></td>
 </tr>
 </table>
 
 </div>
 
-**Jump to:** [📖 What it is](#-what-bhashabridge-is) · [🧠 What makes it different](#-what-makes-it-different) ·
-[📊 Evidence](#-evidence-at-a-glance) · [✨ Features](#-features) · [📱 Screenshots](#-screenshots) ·
-[📈 Benchmarks](#-where-the-speed-up-comes-from) · [🕸️ v3.4.1 vs V4 vs iPhone](#️-three-way-comparison-v341-vs-v4-vs-iphone) ·
-[🔬 KleidiAI & EPs](#-kleidiai--the-execution-providers) ·
-[🍎 Android vs iOS](#-cross-platform-android-and-ios) · [🚀 Get started](#-get-started) ·
-[🗂️ Repo guide](#️-repository-guide) · [📚 Docs](#-documentation) · [⚠️ Limitations](#️-known-limitations) ·
-[🧾 Why trust it](#-why-trust-any-of-this) · [⚖️ License](#️-license)
+**Jump to:** [What it is](#what-bhashabridge-is) · [What makes it different](#what-makes-it-different) ·
+[Evidence](#evidence-at-a-glance) · [Features](#features) · [Screenshots](#screenshots) ·
+[Benchmarks](#where-the-speed-up-comes-from) · [v3.4.1 vs V4 vs iPhone](#three-way-comparison-v341-vs-v4-vs-iphone) ·
+[KleidiAI & EPs](#kleidiai--the-execution-providers) ·
+[Android vs iOS](#cross-platform-android-and-ios) · [Get started](#get-started) ·
+[Repo guide](#repository-guide) · [Docs](#documentation) · [Limitations](#known-limitations) ·
+[Why trust it](#why-trust-any-of-this) · [License](#license)
 
 ---
 
-## 📖 What BhashaBridge is
+## What BhashaBridge is
 
 A private translator that works when the network doesn't. It runs a **distilled IndicTrans2 200M translation
 model and an on-device speech pipeline** entirely on the phone's Arm CPU — type or speak in either language,
@@ -56,7 +56,7 @@ and four silicon vendors, then independently ported and re-measured on iOS.
 
 ---
 
-## 🧠 What makes it different
+## What makes it different
 
 | Runtime decision | What BhashaBridge does |
 |---|---|
@@ -75,12 +75,12 @@ hardware-aware decisions made for them and the evidence in the box.
 
 ---
 
-## 📊 Evidence at a glance
+## Evidence at a glance
 
 Every number below is measured on the phone and bounded. Where the project's own ablation disproved one of
-its earlier claims, that is recorded here rather than buried (see [Why trust any of this](#-why-trust-any-of-this)).
+its earlier claims, that is recorded here rather than buried (see [Why trust any of this](#why-trust-any-of-this)).
 
-### 📶 One APK, the whole Arm ISA range — 8.2× from oldest to newest
+### One APK, the whole Arm ISA range — 8.2× from oldest to newest
 
 <p align="center"><img src="docs/images/charts/devices_throughput.svg" alt="Bar chart of sustained throughput across nine Android devices, from 50.3 tok/s on Armv8.0 to 412.8 tok/s on ARMv9" width="820"></p>
 
@@ -93,12 +93,12 @@ The three that matter most:
 
 | | Claim | The number |
 |---|---|---|
-| 🧮 | The rewrite changed the **complexity class**, not a constant | 12-token decode **2.12× faster**, per-token rate rises instead of falling |
-| 🔬 | KleidiAI's SME kernel runs — and the app **turns it off anyway**, by measurement | forcing it on costs **−8.9%** on Android, wins **+3–9%** on iOS |
-| ✅ | INT8 quantization changed the **output not at all** | greedy tokens identical to fp32, weights **3.96× smaller** |
+| | The rewrite changed the **complexity class**, not a constant | 12-token decode **2.12× faster**, per-token rate rises instead of falling |
+| | KleidiAI's SME kernel runs — and the app **turns it off anyway**, by measurement | forcing it on costs **−8.9%** on Android, wins **+3–9%** on iOS |
+| | INT8 quantization changed the **output not at all** | greedy tokens identical to fp32, weights **3.96× smaller** |
 
 <details>
-<summary><b>📋 All nine claims, each with the boundary it holds inside — click to expand</b></summary>
+<summary><b> All nine claims, each with the boundary it holds inside — click to expand</b></summary>
 
 <br>
 
@@ -121,22 +121,22 @@ The three that matter most:
 
 ---
 
-## ✨ Features
+## Features
 
 | | Feature | |
 |---|---|---|
-| 💬 | **Offline translation** | English ⇄ Hindi, both directions, from verified cached INT8 graphs |
-| 🎙️ | **Live speech** | Vosk recognition with a running waveform, streaming translation of partials, spoken output via system TTS — the recognizer runs **5.25× faster than the speech itself** on a flagship |
-| 🚨 | **Emergency phrases** | 32 human-translated pairs, four categories, instant — no model on the path |
-| 📂 | **Audio import** | Transcribe and translate a recorded file via the Storage Access Framework (no storage permission) |
-| 📟 | **Live telemetry** | Top-right panel: tokens · ms · tok/s of the last translation, the ORT policy in force, the detected CPU |
-| 🧪 | **Arm Smoke Test** | Standalone benchmark app: preset dial (Light → Torture), KleidiAI A/B, thread sweep, per-graph timings, thermal + energy telemetry, one-tap **CSV/JSON export** (`bb-bench/1`) |
-| 🌐 | **Bilingual UI** | App language English / हिंदी, plus history and a Model & device panel |
-| 🎨 | **Polish** | Streaming output with Stop / New / Copy, Markdown-clean rendering, light / dark / system themes |
+| | **Offline translation** | English ⇄ Hindi, both directions, from verified cached INT8 graphs |
+| | **Live speech** | Vosk recognition with a running waveform, streaming translation of partials, spoken output via system TTS — the recognizer runs **5.25× faster than the speech itself** on a flagship |
+| | **Emergency phrases** | 32 human-translated pairs, four categories, instant — no model on the path |
+| | **Audio import** | Transcribe and translate a recorded file via the Storage Access Framework (no storage permission) |
+| | **Live telemetry** | Top-right panel: tokens · ms · tok/s of the last translation, the ORT policy in force, the detected CPU |
+| | **Arm Smoke Test** | Standalone benchmark app: preset dial (Light → Torture), KleidiAI A/B, thread sweep, per-graph timings, thermal + energy telemetry, one-tap **CSV/JSON export** (`bb-bench/1`) |
+| | **Bilingual UI** | App language English / हिंदी, plus history and a Model & device panel |
+| | **Polish** | Streaming output with Stop / New / Copy, Markdown-clean rendering, light / dark / system themes |
 
 ---
 
-## 📱 Screenshots
+## Screenshots
 
 Captured on a Snapdragon 6 Gen 1 phone (ARMv8.2, dotprod, no i8mm/SME), offline:
 
@@ -150,22 +150,22 @@ KleidiAI), and the detected CPU capabilities — so an on-screen number is the n
 
 ---
 
-## 📟 In-app metrics & benchmark
+## In-app metrics & benchmark
 
 Two views of the same engine — and the benchmark **compiles the app's own inference sources** (a mirror,
 never a fork), so its numbers come from the exact engine the product runs.
 
 | | Where | What it reports |
 |---|---|---|
-| 📟 | **In the translator** | The last translation live — `12 tokens · 86 ms · 140 tok/s` — plus the running policy (`arm-adaptive(threads=2,noKleidiAI)`) and the detected CPU |
-| 🧪 | **In the Arm Smoke Test** | A PP-512 / TG-128 pass on an unplugged, thermally-settled phone: translation latency, per-graph cost, a KleidiAI A/B, CPU-throughput scaling — every pass exportable |
+| | **In the translator** | The last translation live — `12 tokens · 86 ms · 140 tok/s` — plus the running policy (`arm-adaptive(threads=2,noKleidiAI)`) and the detected CPU |
+| | **In the Arm Smoke Test** | A PP-512 / TG-128 pass on an unplugged, thermally-settled phone: translation latency, per-graph cost, a KleidiAI A/B, CPU-throughput scaling — every pass exportable |
 
 Representative mid-range pass: **716 ms / translation · 16 → 12 tokens · 16.8 tok/s**; encoder 90 ms,
 `decoder_init` 59 ms, `decoder_step` 46 ms/tok; int8 dot-product **200.9M → 460.8M op/s** across the fast cluster.
 
 ---
 
-## 📈 Where the speed-up comes from
+## Where the speed-up comes from
 
 The current benchmark of record re-runs the earlier version's own INT8 graphs through the new harness, so the
 comparison is apples-to-apples rather than marketing. Translation latency, EN→HI, `MtBenchmarkTest`, medians:
@@ -192,7 +192,7 @@ Full method, the negative results, and every limit: **[docs/Optimization.md](doc
 
 ---
 
-## 🕸️ Three-way comparison: v3.4.1 vs V4 vs iPhone
+## Three-way comparison: v3.4.1 vs V4 vs iPhone
 
 Best observed result per column: **v3.4.1** (the baseline lineage), **V4 on the Galaxy S26 Ultra**
 (Snapdragon 8 Elite Gen 5), and **V4 on iPhone** (the fastest iOS run). Every figure below is lifted from
@@ -214,21 +214,21 @@ speed side — it owns short, long and worst-case latency outright. **V4 on iPho
 the steadiest run in the database and the smallest model on disk. The milliseconds behind each axis are in
 the charts below.
 
-### ⏱️ Translation latency — the headline delta
+### Translation latency — the headline delta
 
 <p align="center"><img src="docs/images/charts/version_latency.svg" alt="Three-way bar chart of short-sentence, long-sentence and first-translation latency" width="760"></p>
 
 **17.6× faster on the long sentence** (1353.6 → 77.0 ms). The short sentence improves 8.4×; the gap widens
 with length because the fix was to the complexity class, not to a constant.
 
-### 📉 Stability — jitter and worst case
+### Stability — jitter and worst case
 
 <p align="center"><img src="docs/images/charts/version_stability.svg" alt="Bar chart of latency standard deviation, p95 and sustained drift across the three versions" width="700"></p>
 
 v3.4.1 was **five times jitterier** than V4 and its worst case was ~10× higher. The iPhone run is the most
 stable thing in the database — stdev **1.46 ms** and **+0.2%** drift under sustained load.
 
-### 🚀 Startup — engine-init by cache state
+### Startup — engine-init by cache state
 
 <p align="center"><img src="docs/images/charts/version_startup.svg" alt="Bar chart of cold, warm and hot engine-init plus cold tokenizer parse for V4 Android and V4 iOS" width="720"></p>
 
@@ -241,7 +241,7 @@ gets a warm-cache discount: its three states sit flat at ~1,020 ms.
 **The model was never the bottleneck.** Roughly half of that 27 s was a character-at-a-time JSON parser and
 nearly the other half was ONNX Runtime building sessions. Unpacking 472 MB of assets cost 1.8 s, once.
 
-### 📋 The rest of the table, without the charts
+### The rest of the table, without the charts
 
 | Metric | v3.4.1 | V4 — S26 Ultra | V4 — iPhone |
 |---|---|---|---|
@@ -263,13 +263,13 @@ inputs** — no error, just a sentence that stopped early; V4 derives the cap fr
 
 ---
 
-## 🔬 KleidiAI & the execution providers
+## KleidiAI & the execution providers
 
 BhashaBridge doesn't guess which kernel ran. It profiled the shipped library with `simpleperf` and decoded
 the hottest loop straight out of `.text`:
 
 ```asm
-smopa za0.s, p2/m, p2/m, z4.b, z8.b   ; KleidiAI SME int8 outer-product — 21.7% of all ORT time
+smopa za0.s, p2/m, p2/m, z4.b, z8.b ; KleidiAI SME int8 outer-product — 21.7% of all ORT time
 ```
 
 **SME is dispatched, and it is the single hottest piece of code in the application. The app disables it
@@ -279,9 +279,9 @@ measurement: the project's most useful result.
 
 | Provider | Verdict | Measurement |
 |---|---|---|
-| 🟢 **MLAS (CPU)** | **shipped** | dot-product / i8mm / SME dispatched per silicon at runtime |
-| 🔴 **XNNPACK** | rejected | places **0 nodes** — it silently *is* MLAS |
-| 🔴 **NNAPI / NPU** | rejected | **2.3× slower** than the tuned CPU path |
+| **MLAS (CPU)** | **shipped** | dot-product / i8mm / SME dispatched per silicon at runtime |
+| **XNNPACK** | rejected | places **0 nodes** — it silently *is* MLAS |
+| **NNAPI / NPU** | rejected | **2.3× slower** than the tuned CPU path |
 
 <details>
 <summary><b>Why the flagship's 2× is not attributed to the ISA — click to expand</b></summary>
@@ -302,12 +302,12 @@ Details: **[docs/ArmPlatform.md](docs/ArmPlatform.md)**.
 
 ---
 
-## 🍎 Cross-platform: Android and iOS
+## Cross-platform: Android and iOS
 
 The same INT8 model and engine were ported to iOS (also arm64, also big.LITTLE) and re-measured. Same graphs,
 different scheduler — so the two platforms are reported **side by side, never averaged**:
 
-| Decision | 🤖 Android | 🍎 iOS |
+| Decision | Android | iOS |
 |---|---|---|
 | **KleidiAI / SME** | **off** — forcing it on costs 8.9% | **on** — wins 1.089× / 1.045× |
 | **Intra-op threads** | 1–4, derived from topology | **1** — a second thread costs **+16.8% / +11.4%** |
@@ -319,14 +319,14 @@ and the full write-up in **[PROJECT_WRITEUP.md](docs/submission/PROJECT_WRITEUP.
 
 ---
 
-## 🚀 Get started
+## Get started
 
 <div align="center">
 
-### 📲 Install the prebuilt app — models bundled, no build, offline from the first launch
+### Install the prebuilt app — models bundled, no build, offline from the first launch
 
-[![Download the APK](https://img.shields.io/badge/⬇%20BhashaBridge--v4--arm64.apk-2ea44f?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/BhashaBridge-v4-arm64.apk)
-[![Download the benchmark](https://img.shields.io/badge/🧪%20ArmSmokeTest%20benchmark-0091BD?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/ArmSmokeTest-benchapp-arm64.apk)
+[![Download the APK](https://img.shields.io/badge/BhashaBridge--v4--arm64.apk-2ea44f?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/BhashaBridge-v4-arm64.apk)
+[![Download the benchmark](https://img.shields.io/badge/ArmSmokeTest%20benchmark-0091BD?style=for-the-badge)](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/ArmSmokeTest-benchapp-arm64.apk)
 
 </div>
 
@@ -337,12 +337,12 @@ source" if prompted). Or over adb:
 adb install -r BhashaBridge-v4-arm64.apk
 ```
 
-**Then, on the phone:** 1️⃣ pick a direction and type or tap the mic · 2️⃣ tap the **stats icon** (top-right)
-for live `tokens · ms · tok/s` and the CPU policy chosen for *your* phone · 3️⃣ try an **emergency phrase**
+**Then, on the phone:** 1. pick a direction and type or tap the mic · 2. tap the **stats icon** (top-right)
+for live `tokens · ms · tok/s` and the CPU policy chosen for *your* phone · 3. try an **emergency phrase**
 for the instant, model-free path.
 
 <details>
-<summary><b>🛠 Or build it from source</b></summary>
+<summary><b> Or build it from source</b></summary>
 
 <br>
 
@@ -360,7 +360,7 @@ in **[docs/Build.md](docs/Build.md)**; the build is arm64-first and ships every 
 
 ---
 
-## 🗂️ Repository guide
+## Repository guide
 
 | Location | Purpose |
 |---|---|
@@ -374,7 +374,7 @@ in **[docs/Build.md](docs/Build.md)**; the build is arm64-first and ships every 
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 | Document | What it covers |
 |---|---|
@@ -389,19 +389,19 @@ in **[docs/Build.md](docs/Build.md)**; the build is arm64-first and ships every 
 
 ---
 
-## ⚠️ Known limitations
+## Known limitations
 
 | | Limitation | Detail |
 |---|---|---|
-| 📦 | **~619 MB of assets** | Side-loading works today; Play would need asset delivery or a first-run download. This limits reach more than any technical factor here. |
-| ⏱️ | **~5 s to first translation** | Down from 27 s, still the worst user-facing number in the project. |
-| 🔧 | **Release builds not yet shippable** | Debug-signed, R8 disabled, `versionCode` not incremented. |
-| 📱 | **Portrait-only** | Deliberate — the landscape layout was unusable, so it is locked, not left broken. |
-| 🎤 | **Speech WER / TTS latency unmeasured** | The bundled Vosk Hindi model publishes 14.96–39.08% WER by test set. |
+| | **~619 MB of assets** | Side-loading works today; Play would need asset delivery or a first-run download. This limits reach more than any technical factor here. |
+| | **~5 s to first translation** | Down from 27 s, still the worst user-facing number in the project. |
+| | **Release builds not yet shippable** | Debug-signed, R8 disabled, `versionCode` not incremented. |
+| | **Portrait-only** | Deliberate — the landscape layout was unusable, so it is locked, not left broken. |
+| | **Speech WER / TTS latency unmeasured** | The bundled Vosk Hindi model publishes 14.96–39.08% WER by test set. |
 
 ---
 
-## 🧾 Why trust any of this
+## Why trust any of this
 
 **Because the project publishes what it had to withdraw.** The `.ort`-era latency numbers, the "mmap is
 exclusive to one platform" conclusion (falsified by a Qualcomm device), the pre-clamp `intra=4` default, and
@@ -414,7 +414,7 @@ temperature it was read at — because on this workload a comparison under ~10% 
 
 ---
 
-## ⚖️ License
+## License
 
 BhashaBridge V4 is licensed under the **MIT License**. It builds on **ONNX Runtime**, **Arm KleidiAI**, **Vosk**,
 and the **IndicTrans2** model from AI4Bharat — each keeps its own license; see
@@ -423,6 +423,6 @@ and the **IndicTrans2** model from AI4Bharat — each keeps its own license; see
 <div align="center">
 <br>
 
-**Built for the Arm Create submission** · [📄 Write-up](docs/submission/PROJECT_WRITEUP.md) · [📊 Benchmarks](docs/Benchmarks.md) · [⬇ Download](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/BhashaBridge-v4-arm64.apk)
+**Built for the Arm Create submission** · [ Write-up](docs/submission/PROJECT_WRITEUP.md) · [ Benchmarks](docs/Benchmarks.md) · [ Download](https://github.com/pareshvpk/BhashaBridgeV4-ARM-AI-Optimization/releases/download/V4.0/BhashaBridge-v4-arm64.apk)
 
 </div>
